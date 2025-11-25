@@ -12,7 +12,7 @@
 > 아래 버튼(예시)을 통해 각 문서를 읽어보실 수 있으며  
 > 설명 간 작성한 코드 또는 프로젝트는 /Projects/ 하위에 분류되어 업로드됩니다.  
 
-| 00. 대분류 제목 | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/SWEA-Original/blob/main/test.md)   |
+| 00. 대분류 제목 | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/test.md)   |
 |:---:|:---:|
 
 ### 개요
