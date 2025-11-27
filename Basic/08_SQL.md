@@ -3,7 +3,8 @@
 SQL : 관계 데이터베이스에서 작업처리를 위해 사용되는 대화식 언어  
 ① DDL (Data Definition Language) : 데이터 정의어  
 &nbsp;&nbsp;&nbsp;&nbsp; 1-1. CREATE : 테이블/스키마/도메인/인덱스 정의  
-{} : 반복, [] : 생략가능, | : 선택  
+
+<참고> {} : 반복, [] : 생략가능, | : 선택  
 ```sql
 CREATE TABLE 테이블명
 ({속성명 데이터타입 [NOT NULL], }
