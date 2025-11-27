@@ -46,5 +46,5 @@
 ---
 
 
-| 08. SQL | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/09_SQL.md)   |
+| 08. SQL | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/08_SQL.md)   |
 |:---:|:---:|
