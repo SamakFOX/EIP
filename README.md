@@ -42,3 +42,9 @@
 > 10 - 프로그래밍 언어활용 (기본 문법 등)  
 > 11 - 응용 SW기초 기술 활용 (운영체제, 데이터베이스 활용, 네트워크 활용, 개발환경 구축 등)  
 > 12 - 제품 소프트웨어 패키징 (제품 소프트웨어 패키징, 제품소프트웨어 매뉴얼 작성 , 버전 관리등 )  
+
+---
+
+
+| 08. SQL | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/09_SQL.md)   |
+|:---:|:---:|
