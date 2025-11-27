@@ -47,7 +47,7 @@
 
 # 1. 기본 이론
 
-### 08. SQL
+### 08. SQL 응용
 SQL : 관계 데이터베이스에서 작업처리를 위해 사용되는 대화식 언어 (DDL / DML / DCL)  
-| 08. SQL | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/08_SQL.md)   |
+| 08. SQL 응용 | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/08_SQL.md)   |
 |:---:|:---:|
