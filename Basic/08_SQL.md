@@ -1,6 +1,4 @@
 # 08. SQL
-### SQL이란?
-SQL : 관계 데이터베이스에서 작업처리를 위해 사용되는 대화식 언어  
 ① DDL (Data Definition Language) : 데이터 정의어  
 &nbsp;&nbsp;&nbsp;&nbsp; 1-1. CREATE : 테이블/스키마/도메인/인덱스 정의  
 
