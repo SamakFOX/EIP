@@ -1,4 +1,5 @@
 # 08. SQL
+[![네비게이션](https://img.shields.io/badge/정보처리기사_프로젝트로_돌아가기-gray?style=for-the-badge)](https://github.com/SamakFOX/EIP)  
 ① DDL (Data Definition Language) : 데이터 정의어  
 &nbsp;&nbsp;&nbsp;&nbsp; 1-1. CREATE : 테이블/스키마/도메인/인덱스 정의  
 
