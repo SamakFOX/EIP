@@ -40,3 +40,47 @@ CREATE TABLE 테이블명
 | TIME | 시간 |
 | DATE | 날짜 |
 
+| CREATE문 테이블 생성 예시 |
+|---|
+> 컬럼 속성의 경우 컬럼 선언시에 설정해도 되고 별도로 설정해도 된다.   
+> 여러 컬럼의 조합에 속성을 줄 때에는 별도로 설정해야 함. 
+> ex) UNIQUE (email, nickname)
+```sql
+create table Student (
+    st_id INT NOT NULL,
+    st_name VARCHAR(50) NOT NULL,
+    st_phone CHAR(13),
+    dept_id INT,
+    age INT,
+    
+    PRIMARY KEY (st_id),
+    UNIQUE (st_phone),
+    
+    FOREIGN KEY (dept_id) REFERENCES Department(dept_id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE,
+    
+    CONSTRAINT chk_age CHECK (age >= 0)
+);
+```
+또는
+```sql
+create table Student (
+    st_id INT NOT NULL PRIMARY KEY,
+    st_name VARCHAR(50) NOT NULL,
+    st_phone CHAR(13) UNIQUE,
+    dept_id INT,
+    age INT CHECK (age >= 18),
+    
+    FOREIGN KEY (dept_id) REFERENCES Department(dept_id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+);
+```
+
+
+
+
+---
+### **DML (Data Manipulation Language) : 데이터 제어어**  
+---  
