@@ -42,9 +42,9 @@ CREATE TABLE 테이블명
 
 | CREATE문 테이블 생성 예시 |
 |---|
-> 컬럼 속성의 경우 컬럼 선언시에 설정해도 되고 별도로 설정해도 된다.   
-> 여러 컬럼의 조합에 속성을 줄 때에는 별도로 설정해야 함. 
-> ex) UNIQUE (email, nickname)
+> 컬럼 속성의 경우 컬럼 선언시에 설정해도 되고 별도로 설정해도 된다.  
+> 여러 컬럼의 조합에 속성을 줄 때에는 별도로 설정해야 함.  
+> ex) UNIQUE (name, phone) -> (이름과 핸드폰번호)의 조합이 중복이 없어야 할 경우.  
 ```sql
 create table Student (
     st_id INT NOT NULL,
