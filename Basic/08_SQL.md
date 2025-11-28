@@ -22,6 +22,7 @@ CREATE TABLE 테이블명
 ★ UNIQUE (속성명) : 중복값 없이 모든 속성값이 고유값을 갖도록 지정  
 ★ FOREIGN KEY (속성명) REFERENCES 참조테이블명(속성명) : 외래키 지정 (참조 무결성)  
 ★ CONSTRAINT 제약조건명 CHECK (속성명=범위값) : 특정 속성에 범위 지정 (도메인 무결성)  
+★ CREATE TABLE | VIEW AS SELECT ~ : 뒤 서브쿼리 결과로 신규 테이블/뷰 생성  
 ★ 명명규칙
 | 규칙 | 특이사항 |
 |---|---|
