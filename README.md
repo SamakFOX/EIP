@@ -47,8 +47,11 @@
 
 # 1. 기본 이론
 
-### 08. SQL 응용
+### 08. SQL
 SQL : 관계 데이터베이스에서 작업처리를 위해 사용되는 대화식 언어 (DDL / DML / DCL)  
+고급 SQL : INDEX / VIEW / 서브쿼리 / JOIN / SET  
+응용 SQL : 집계함수 / GROUP BY / 윈도우함수  
+
 | 8-1. SQL 응용 | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/8-1_Applied-SQL.md)   |
 |:---:|:---:|
 
