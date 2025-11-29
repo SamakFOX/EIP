@@ -1,4 +1,4 @@
-# 08. SQL  
+# 8-1. SQL 응용  
 
 ---
 ### **DDL (Data Definition Language) : 데이터 정의어**  
