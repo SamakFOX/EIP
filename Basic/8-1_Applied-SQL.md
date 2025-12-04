@@ -37,7 +37,7 @@ CREATE TABLE 테이블명 (
 | SQL 예약어 사용 불가 | ex) select, table 등 |
 
 &nbsp;
-| CREATE문 테이블 생성 예시 |
+| CREATE문 - 테이블 생성 예시 |
 |---|
 > 컬럼 속성의 경우 컬럼 선언시에 설정해도 되고 별도로 설정해도 된다.  
 > 여러 컬럼의 조합에 속성을 줄 때에는 별도로 설정해야 함.  
@@ -79,7 +79,7 @@ CREATE TABLE Student (
 ```ts
 CREATE TABLE AS SELECT ~
 ```
-| AS 활용 예시 |
+| CREATE문 - AS 활용 예시 |
 |---|
 
 ```sql
@@ -102,7 +102,7 @@ CREATE SCHEMA 스키마명 AUTHORIZATION 사용자명;
 &nbsp;&nbsp;&nbsp;&nbsp;→ 생성/수정/삭제에 대한 권한을 가짐  
 &nbsp;&nbsp;&nbsp;&nbsp;→ 다른 사용자에게 권한을 줄 수 있음  
 
-| 스키마 생성 예시 |
+| CREATE문 - 스키마 생성 예시 |
 |---|
 
 ```sql
@@ -119,7 +119,7 @@ CREATE DOMAIN 도메인명 데이터타입
   [CONSTRAINT 제약조건명 CHECK(VALUE IN (범위값))];
 ```
 
-| 도메인 생성 예시 |
+| CREATE문 - 도메인 생성 예시 |
 |---|
 
 ```sql
@@ -143,7 +143,7 @@ CREATE [UNIQUE] INDEX 인덱스명
 ★ ASC/DESC : 오름차순/내림차순  
 ★ CLUSTER : 클러스터드 인덱스로 설정 (실제 테이블을 인덱스를 기준으로 재정렬)  
 
-| 인덱스 생성 예시 |
+| CREATE문 - 인덱스 생성 예시 |
 |---|
 
 ```sql
