@@ -1,12 +1,12 @@
 # 8-1. SQL 응용  
 
 ---
-### **DDL (Data Definition Language) : 데이터 정의어**  
+## **DDL (Data Definition Language) : 데이터 정의어**  
 ---  
 
 ### ① CREATE : 테이블/스키마/도메인/인덱스 정의  
 
-### · 테이블 정의
+#### ◆ 테이블 정의
 <참고> {} : 반복, [] : 생략가능, | : 선택  
 ```ts
 CREATE TABLE 테이블명 (
@@ -87,7 +87,7 @@ CREATE TABLE Adult_Student AS
 SELECT st_id, st_name, st_phone FROM Student WHERE age >= 20;
 ```
 &nbsp;
-### · 스키마 정의
+#### ◆ 스키마 정의
 스키마 : [ 데이터베이스 ]-[ 스키마 ]-[ 테이블/뷰/인덱스 ] 구조에서 용도별 영역을 구분하기 위해 사용됨  
 
 스키마를 분리하고 권한을 주기 위해 생성  
@@ -109,7 +109,7 @@ CREATE SCHEMA 스키마명 AUTHORIZATION 사용자명;
 CREATE SCHEMA university AUTHORIZATION univmaster;
 ```
 &nbsp;
-### · 도메인 정의
+#### ◆ 도메인 정의
 도메인 : 특정 속성이 가질 수 있는 값의 범위를 지정하기 위해 사용됨  
 ※ 표준SQL에서만 사용하고 대부분 DBMS에서 미지원하므로 이해만.  
 
@@ -129,7 +129,7 @@ CREATE DOMAIN GenderType CHAR(1)
 ```
 성별을 남/여/미선택 세가지만 들어오도록 지정  
 &nbsp;
-### · 인덱스 정의
+#### ◆ 인덱스 정의
 인덱스 : 테이블의 검색 속도를 빠르게 하기 위해 데이터의 위치 정보를 저장한 자료 구조  
 ※ [ 정렬된 키(key) + 실제 데이터 주소] 로 구성되며, 시스템에서 자동적으로 관리됨  
 
@@ -150,7 +150,7 @@ CREATE [UNIQUE] INDEX 인덱스명
 CREATE UNIQUE INDEX idx_phone
   ON Student (st_phohe ASC);
 ```
-
+&nbsp;
 ### ② ALTER : 기존 테이블에 속성 추가·변경·삭제  
 ```ts
 ALTER TABLE 테이블명 ADD 속성명 데이터타입 [DEFAULT];
@@ -163,8 +163,8 @@ ALTER TABLE 테이블명 DROP 속성명 [CASCADE | RESTRICT];
 ★ DEFAULT /SET DEFAULT : 기본값 지정  
 ★ CASCADE : 종속된 데이터 연쇄 삭제  
 ★ RESTRICT : 종속된 데이터인 경우 삭제 취소  
-
-### ② DROP : 기존 테이블에 속성 추가·변경·삭제  
+&nbsp;
+### ③ DROP : 기존 테이블에 속성 추가·변경·삭제  
 ```ts
 DROP TABLE 테이블명 [CASCADE | RESTRICT];
 DROP SCHEMA 스키마명 [CASCADE | RESTRICT];
