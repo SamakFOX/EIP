@@ -151,6 +151,33 @@ CREATE UNIQUE INDEX idx_phone
   ON Student (st_phohe ASC);
 ```
 
+### ② ALTER : 기존 테이블에 속성 추가·변경·삭제  
+```ts
+ALTER TABLE 테이블명 ADD 속성명 데이터타입 [DEFAULT];
+ALTER TABLE 테이블명 ALTER 속성명 [SET DEFAULT];
+ALTER TABLE 테이블명 DROP 속성명 [CASCADE | RESTRICT];
+```
+★ ADD : 새로운 속성 추가  
+★ ALTER : 기존 속성 변경  
+★ DROP : 기존 속성 삭제  
+★ DEFAULT /SET DEFAULT : 기본값 지정  
+★ CASCADE : 종속된 데이터 연쇄 삭제  
+★ RESTRICT : 종속된 데이터인 경우 삭제 취소  
+
+### ② DROP : 기존 테이블에 속성 추가·변경·삭제  
+```ts
+DROP TABLE 테이블명 [CASCADE | RESTRICT];
+DROP SCHEMA 스키마명 [CASCADE | RESTRICT];
+DROP DOMAIN 도메인명 [CASCADE | RESTRICT];
+DROP VIEW 뷰명 [CASCADE | RESTRICT];
+DROP INDEX 인덱스명;
+DROP CONSTRAINT 제약조건명;
+```
+★ CASCADE : 종속된 데이터 연쇄 삭제  
+★ RESTRICT : 종속된 데이터인 경우 삭제 취소  
+
+
+
 ---
 ### **DML (Data Manipulation Language) : 데이터 제어어**  
 ---  
