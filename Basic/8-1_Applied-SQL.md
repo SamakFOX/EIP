@@ -76,9 +76,6 @@ CREATE TABLE Student (
 ```
 
 ★ AS : 뒤 서브쿼리 결과로 신규 테이블 생성  
-```ts
-CREATE TABLE AS SELECT ~
-```
 | CREATE문 - AS 활용 예시 |
 |---|
 
@@ -88,13 +85,11 @@ SELECT st_id, st_name, st_phone FROM Student WHERE age >= 20;
 ```
 &nbsp;
 #### ◆ 스키마 정의
-스키마 : [ 데이터베이스 ]-[ 스키마 ]-[ 테이블/뷰/인덱스 ] 구조에서 용도별 영역을 구분하기 위해 사용됨  
+스키마 : 용도별 영역을 구분하기 위해 사용됨  
+데이터베이스 하위에 `스키마`가 존재하며 스키마 하위에 `테이블/뷰/인덱스`등이 존재  
+스키마를 분리하여 여러 용도에 맞게 각각 DB를 관리하도록 할 수 있음  
 
-스키마를 분리하고 권한을 주기 위해 생성  
-(ex> CREATE SCHEMA sales; CREATE TABLE sales.orders(...); GRANT SELECT ON SCHEMA sales TO s_team;)
-
-CREATE SCHEMA : 사용자에게 DB 구축에 필요한 권한을 주기 위한 스키마를 만들 때 사용  
-(ex> GRANT ~ ON SCHEMA ~ TO ~ ;)  
+CREATE SCHEMA : 스키마를 분리하고 사용자에게 DB 구축에 필요한 권한을 주기 위한 스키마를 만들 때 사용  
 ```ts
 CREATE SCHEMA 스키마명 AUTHORIZATION 사용자명;
 ```
@@ -106,7 +101,17 @@ CREATE SCHEMA 스키마명 AUTHORIZATION 사용자명;
 |---|
 
 ```sql
+-- 스키마 생성
 CREATE SCHEMA university AUTHORIZATION univmaster;
+-- 스키마에 테이블 생성
+CREATE TABLE university.student (
+    st_id      INT PRIMARY KEY,
+    st_name    VARCHAR(15),
+    major      VARCHAR(20),
+    admission  DATE
+);
+-- 스키마 사용 권한 부여
+GRANT SELECT ON SCHEMA university TO s_team;
 ```
 &nbsp;
 #### ◆ 도메인 정의
@@ -162,6 +167,7 @@ ALTER TABLE 테이블명 DROP 속성명 [CASCADE | RESTRICT];
 ★ DROP : 기존 속성 삭제  
 ★ DEFAULT /SET DEFAULT : 기본값 지정  
 ★ CASCADE : 종속된 데이터 연쇄 삭제  
+&nbsp;&nbsp;(B테이블이 A테이블을 참조할때 A삭제시 B에서도 데이터가 삭제됨)  
 ★ RESTRICT : 종속된 데이터인 경우 삭제 취소  
 &nbsp;
 ### ③ DROP : 기존 테이블에 속성 추가·변경·삭제  
