@@ -181,9 +181,38 @@ DROP CONSTRAINT 제약조건명;
 ```
 ★ CASCADE : 종속된 데이터 연쇄 삭제  
 ★ RESTRICT : 종속된 데이터인 경우 삭제 취소  
-
-
+&nbsp;
 
 ---
-### **DML (Data Manipulation Language) : 데이터 제어어**  
+## **DML (Data Manipulation Language) : 데이터 조작어**  
 ---  
+
+### ① SELECT (검색문)
+```ts
+SELECT [DISTINCT] 속성명 FROM 테이블명
+  [WHERE 조건]
+  [GROUP BY 속성명 [HAVING 그룹조건]]
+  [ORDER BY 속성명 [ASC | DESC]];
+```
+★ DISTINCT : 검색결과에 중복값이 있는 경우 한번만 출력 (표현)  
+★ WHERE 조건 : 검색 조건 (연산자 이용 가능)  
+★ GROUP BY : 속성을 그룹으로 분류  
+★ HAVING : GROUPBY 후 필터링 조건  
+★ ORDER BY : 속성값을 기준으로 정렬 (ASC 오름, DESC 내림)  
+★ AS 표현명 : 출력 속성을 지정한 별칭(Alias)으로 출력  
+| SELECT문 - AS 활용 예시 |
+|---|
+```sql
+SELECT st_name AS 이름, age AS 나이 FROM student;
+```
+
+| SELECT문 - 도메인 생성 예시 |
+|---|
+
+```sql
+SELECT DISTINCT dept_id FROM Student
+  WHERE score >= 70
+  GROUP BY dept_id
+  HAVING AVG(score) >= 80
+  ORDER BY dept_id ASC;
+```
