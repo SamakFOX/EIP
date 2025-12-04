@@ -1,7 +1,7 @@
 # 8-1. SQL 응용  
 
 ---
-## **DDL (Data Definition Language) : 데이터 정의어**  
+### **♣ DDL (Data Definition Language) : 데이터 정의어**  
 ---  
 
 ### ① CREATE : 테이블/스키마/도메인/인덱스 정의  
@@ -184,7 +184,7 @@ DROP CONSTRAINT 제약조건명;
 &nbsp;
 
 ---
-## **DML (Data Manipulation Language) : 데이터 조작어**  
+### **♣ DML (Data Manipulation Language) : 데이터 조작어**  
 ---  
 
 ### ① SELECT (검색문)
@@ -199,20 +199,32 @@ SELECT [DISTINCT] 속성명 FROM 테이블명
 ★ GROUP BY : 속성을 그룹으로 분류  
 ★ HAVING : GROUPBY 후 필터링 조건  
 ★ ORDER BY : 속성값을 기준으로 정렬 (ASC 오름, DESC 내림)  
+★ 집계함수 : SUM(attr)-합계, AVG(attr)-평균, MAX(attr)-최대값, MIN(attr)-최소값, COUNT(attr)-갯수  
 ★ AS 표현명 : 출력 속성을 지정한 별칭(Alias)으로 출력  
-| SELECT문 - AS 활용 예시 |
+| SELECT문 - 집계함수, AS 활용 예시 |
 |---|
 ```sql
-SELECT st_name AS 이름, age AS 나이 FROM student;
+-- SELECT절에서 사용 - 단순 집계
+SELECT dept_id, SUM(score) AS 총점, AVG(score) AS 평균 FROM Student
+  GROUP BY dept_id;
+-- HAVING절에서 사용 - 총점이 300점 이상인 학과 필터링
+SELECT dept_id, AVG(score) AS 평균 FROM student
+  GROUP BY dept_id
+  HAVING SUM(score) >= 300;
 ```
 
-| SELECT문 - 도메인 생성 예시 |
+| SELECT문 - 옵션 전체사용 검색 예시 |
 |---|
 
 ```sql
-SELECT DISTINCT dept_id FROM Student
+SELECT DISTINCT dept_id AS Dept FROM Student
   WHERE score >= 70
   GROUP BY dept_id
   HAVING AVG(score) >= 80
   ORDER BY dept_id ASC;
+```
+
+★ 부속질의문 : 질의문 안에 또 하나의 질의문을 가지는 형태 / `=` 또는 `IN` 으로 연결  
+```sql
+SELECT 
 ```
