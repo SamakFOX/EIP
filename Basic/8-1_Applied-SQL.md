@@ -4,7 +4,7 @@
 ### **DDL (Data Definition Language) : 데이터 정의어**  
 ---  
 
-① CREATE : 테이블/스키마/도메인/인덱스 정의  
+### ① CREATE : 테이블/스키마/도메인/인덱스 정의  
 
 ### · 테이블 정의
 <참고> {} : 반복, [] : 생략가능, | : 선택  
@@ -86,7 +86,7 @@ CREATE TABLE AS SELECT ~
 CREATE TABLE Adult_Student AS
 SELECT st_id, st_name, st_phone FROM Student WHERE age >= 20;
 ```
-
+&nbsp;
 ### · 스키마 정의
 스키마 : [ 데이터베이스 ]-[ 스키마 ]-[ 테이블/뷰/인덱스 ] 구조에서 용도별 영역을 구분하기 위해 사용됨  
 
@@ -107,6 +107,48 @@ CREATE SCHEMA 스키마명 AUTHORIZATION 사용자명;
 
 ```sql
 CREATE SCHEMA university AUTHORIZATION univmaster;
+```
+&nbsp;
+### · 도메인 정의
+도메인 : 특정 속성이 가질 수 있는 값의 범위를 지정하기 위해 사용됨  
+※ 표준SQL에서만 사용하고 대부분 DBMS에서 미지원하므로 이해만.  
+
+```ts
+CREATE DOMAIN 도메인명 데이터타입
+  [DEFAULT 기본값]
+  [CONSTRAINT 제약조건명 CHECK(VALUE IN (범위값))];
+```
+
+| 도메인 생성 예시 |
+|---|
+
+```sql
+CREATE DOMAIN GenderType CHAR(1)
+  DEFAULT 'N'
+  CONSTRAINT gender_chk CHECK (VALUE IN ('M', 'F', 'N'));
+```
+성별을 남/여/미선택 세가지만 들어오도록 지정  
+&nbsp;
+### · 인덱스 정의
+인덱스 : 테이블의 검색 속도를 빠르게 하기 위해 데이터의 위치 정보를 저장한 자료 구조  
+※ [ 정렬된 키(key) + 실제 데이터 주소] 로 구성되며, 시스템에서 자동적으로 관리됨  
+
+```ts
+CREATE [UNIQUE] INDEX 인덱스명
+  ON 테이블명 (속성명 [ASC | DESC])
+  [CLUSTER];
+```
+★ UNIQUE : 중복 없이 고유값을 갖도록 설정  
+★ ON 테이블명 : 선언한 테이블의 속성으로 인덱싱  
+★ ASC/DESC : 오름차순/내림차순  
+★ CLUSTER : 클러스터드 인덱스로 설정 (실제 테이블을 인덱스를 기준으로 재정렬)  
+
+| 인덱스 생성 예시 |
+|---|
+
+```sql
+CREATE UNIQUE INDEX idx_phone
+  ON Student (st_phohe ASC);
 ```
 
 ---
