@@ -1,5 +1,12 @@
 # 8-1. SQL 응용  
 
+## 목차
+- [DDL](#DDL)
+- [DML](#DML)
+- [DCL](#DCL)
+
+<a id="DDL"></a>
+
 ---
 ### **♣ DDL (Data Definition Language) : 데이터 정의어**  
 ---  
@@ -183,6 +190,8 @@ DROP CONSTRAINT 제약조건명;
 ★ RESTRICT : 종속된 데이터인 경우 삭제 취소  
 &nbsp;
 
+<a id="DML"></a>
+
 ---
 ### **♣ DML (Data Manipulation Language) : 데이터 조작어**  
 ---  
@@ -283,6 +292,8 @@ DELETE FROM Student WHERE st_phone = '010-1234-5678';
 -- 전화번호가 5678로 끝나는 모든 행 삭제
 DELETE FROM Student WHERE st_phone LIKE '%5678';
 ```
+
+<a id="DCL"></a>
 
 ---
 ### **♣ DCL (Data Control Language) : 데이터 제어어**  
