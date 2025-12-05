@@ -69,7 +69,7 @@ CREATE TABLE Student (
     dept_id INT,
     age INT CHECK (age >= 18),
     
-    FOREIGN KEY (dept_id) REFERENCES Department(dept_id)
+    FOREIGN KEY (dept_id) REFERENCES Department (dept_id)
         ON DELETE SET NULL
         ON UPDATE CASCADE
 );
@@ -224,7 +224,20 @@ SELECT DISTINCT dept_id AS Dept FROM Student
   ORDER BY dept_id ASC;
 ```
 
-★ 부속질의문 : 질의문 안에 또 하나의 질의문을 가지는 형태 / `=` 또는 `IN` 으로 연결  
+★ 부속 질의문(서브쿼리) : 질의문 안에 또 하나의 질의문을 가지는 형태 / `=` 또는 `IN` 으로 연결  
+★ 부분 매치 질의문(와일드카드) : 문자열 일부를 가지고 비교하여 검색 / `%` 여러문자, `_` 한자리  
 ```sql
-SELECT 
+-- 서브쿼리 결과가 1개 : = 사용
+SELECT st_name FROM Student
+  WHERE dept_id = (SELECT
+    dept_id FROM Department
+    WHERE dept_id = 1002
+  );
+-- 서브쿼리 결과가 여러개 : IN 사용 (+ 와일드카드)
+SELECT dept_amount AS 학생수 FROM Department
+  WHERE dept_id IN (SELECT
+    dept_id FROM Student
+    WHERE st_name LIKE '최__'
+  );
 ```
+
