@@ -255,10 +255,10 @@ INSERT INTO 테이블명[(속성명...)] VALUES (속성값...);
 ```sql
 -- Student 테이블에 데이터 삽입
 INSERT INTO Student (st_id, st_name, st_phone, dept_id, age)
-  VALUES (20200304, '이설', '010-0000-1234', 1002, 20);
+  VALUES (20200304, '최설이', '010-0000-1234', 1002, 20);
 -- 동일 (생략시 테이블 속성이 정의된 순서대로 정확하게 입력해야함)
 INSERT INTO Student
-  VALUES (20200304, '이설', '010-0000-1234', 1002, 20);
+  VALUES (20200304, '최설이', '010-0000-1234', 1002, 20);
 ```
 
 ### ③ UPDATE (갱신문)
@@ -268,5 +268,5 @@ UPDATE 테이블명 SET 속성명 = 변경내용 [WHERE 조건];
 ★ SET : 변경할 자료의 값 → 대입연산자 `=` 사용  
 ★ WHERE 조건 : 변경 대상 조건 → 대입연산자 `=` 사용  
 ```sql
-UPDATE Student SET st_phone = '010-1234-0000' WHERE st_name = '이설';
+UPDATE Student SET st_phone = '010-1234-0000' WHERE st_name = '최설이';
 ```
