@@ -251,5 +251,10 @@ SELECT st_id FROM Student WHERE st_phone IS NOT NULL;
 INSERT INTO 테이블명[(속성명...)] VALUES (속성값...);
 ```
 ★ 삼입될 자료가 모든 속성값을 가지는 경우 속성명은 생략 가능  
-&nbsp;&nbsp;- 속성이 10개인 테이블에 10개 속성 모두를 가진 데이터 insert 시 생략 가능  
-
+&nbsp;&nbsp;- 속성이 10개인 테이블에 10개 속성 모두를 가진 데이터 insert 시 생략 가능 (순서유지)  
+```sql
+-- Student 테이블에 데이터 삽입
+INSERT INTO Student (st_id, st_name, st_phone, dept_id, age) VALUES (20200304, '이설', '010-0000-1234', 1002, 20);
+-- 동일 (생략시 테이블 속성이 정의된 순서대로 정확하게 입력해야함)
+INSERT INTO Student VALUES (20200304, '이설', '010-0000-1234', 1002, 20);
+```
