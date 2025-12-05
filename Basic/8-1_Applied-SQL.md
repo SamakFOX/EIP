@@ -270,3 +270,16 @@ UPDATE 테이블명 SET 속성명 = 변경내용 [WHERE 조건];
 ```sql
 UPDATE Student SET st_phone = '010-1234-0000' WHERE st_name = '최설이';
 ```
+
+### ④ DELETE (삭제문)
+```ts
+DELETE FROM 테이블명 [WHERE 조건];
+```
+★ WHERE 조건 : 조건 생략 시 전체 데이터 삭제 (쿼리 결과 : 빈테이블)  
+&nbsp;&nbsp;- 테이블 삭제가 목적이라면 DROP TABLE 명령어 이용  
+```sql
+-- 한개 행 삭제
+DELETE FROM Student WHERE st_phone = '010-1234-5678';
+-- 전화번호가 5678로 끝나는 모든 행 삭제
+DELETE FROM Student WHERE st_phone LIKE '%5678';
+```
