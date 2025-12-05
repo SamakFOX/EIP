@@ -226,6 +226,9 @@ SELECT DISTINCT dept_id AS Dept FROM Student
 
 ★ 부속 질의문(서브쿼리) : 질의문 안에 또 하나의 질의문을 가지는 형태 / `=` 또는 `IN` 으로 연결  
 ★ 부분 매치 질의문(와일드카드) : 문자열 일부를 가지고 비교하여 검색 / `%` 여러문자, `_` 한자리  
+&nbsp;&nbsp;-`%A` : 끝이 A, `A%` : 시작이 A, `%A%` : A를 포함하는, `A_` : A로 시작하는 두글자, `__A` : A로 끝나는 세글자, `___` : 세글자  
+★ NULL과 비교하는 질의문 : WHERE 절에 IS 사용  `IS NULL` =, `IS NOT NULL` <>  
+
 ```sql
 -- 서브쿼리 결과가 1개 : = 사용
 SELECT st_name FROM Student
@@ -239,5 +242,14 @@ SELECT dept_amount AS 학생수 FROM Department
     dept_id FROM Student
     WHERE st_name LIKE '최__'
   );
+-- NULL이 아닌 행만
+SELECT st_id FROM Student WHERE st_phone IS NOT NULL;
 ```
+
+### ② INSERT (삽입문)
+```ts
+INSERT INTO 테이블명[(속성명...)] VALUES (속성값...);
+```
+★ 삼입될 자료가 모든 속성값을 가지는 경우 속성명은 생략 가능  
+&nbsp;&nbsp;- 속성이 10개인 테이블에 10개 속성 모두를 가진 데이터 insert 시 생략 가능  
 
