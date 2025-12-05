@@ -260,3 +260,13 @@ INSERT INTO Student (st_id, st_name, st_phone, dept_id, age)
 INSERT INTO Student
   VALUES (20200304, '이설', '010-0000-1234', 1002, 20);
 ```
+
+### ③ UPDATE (갱신문)
+```ts
+UPDATE 테이블명 SET 속성명 = 변경내용 [WHERE 조건];
+```
+★ SET : 변경할 자료의 값 → 대입연산자 `=` 사용  
+★ WHERE 조건 : 변경 대상 조건 → 대입연산자 `=` 사용  
+```sql
+UPDATE Student SET st_phone = '010-1234-0000' WHERE st_name = '이설';
+```
