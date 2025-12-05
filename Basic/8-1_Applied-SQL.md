@@ -283,3 +283,19 @@ DELETE FROM Student WHERE st_phone = '010-1234-5678';
 -- 전화번호가 5678로 끝나는 모든 행 삭제
 DELETE FROM Student WHERE st_phone LIKE '%5678';
 ```
+
+---
+### **♣ DCL (Data Control Language) : 데이터 제어어**  
+---  
+
+### ① COMMIT / ROLLBACK
+※ 트랜잭션에서 주로 사용  
+※ AUTOCOMMIT이 비활성화 되어있는 경우에만 사용됨, 활성화된 경우 모든 쿼리 결과가 즉시 저장됨  
+&nbsp;&nbsp;- COMMIT : 연산이 성공적으로 종료되어, 수정 내용을 반영 (저장)  
+&nbsp;&nbsp;- ROLLBACK : 연산 실패/비정상 종료 및 반영을 원치 않을 때, 수행 이전 상태로 되돌림 (취소)  
+```sql
+UPDATE Student SET st_phone = '010-0000-1234' WHERE st_name = '최설이';
+COMMIT;
+DELETE FROM Student WHERE st_name = '최설이';
+ROLLBACK;
+```
