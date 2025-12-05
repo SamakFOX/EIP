@@ -188,6 +188,7 @@ DROP CONSTRAINT 제약조건명;
 ```
 ★ CASCADE : 종속된 데이터 연쇄 삭제  
 ★ RESTRICT : 종속된 데이터인 경우 삭제 취소  
+&nbsp;
 
 <a id="DML"></a>
 
@@ -291,6 +292,7 @@ DELETE FROM Student WHERE st_phone = '010-1234-5678';
 -- 전화번호가 5678로 끝나는 모든 행 삭제
 DELETE FROM Student WHERE st_phone LIKE '%5678';
 ```
+&nbsp;
 
 <a id="DCL"></a>
 
