@@ -188,7 +188,6 @@ DROP CONSTRAINT 제약조건명;
 ```
 ★ CASCADE : 종속된 데이터 연쇄 삭제  
 ★ RESTRICT : 종속된 데이터인 경우 삭제 취소  
-&nbsp;
 
 <a id="DML"></a>
 
