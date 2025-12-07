@@ -1,7 +1,14 @@
 # 8-2. 고급 SQL 작성  
 
+## 목차
+- [1. INDEX](#INDEX)
+- [2. VIEW](#VIEW)
+- [3. SubQuery](#SubQuery)
+
+<a id="INDEX"></a>
+
 ---
-### **인덱스 (INDEX)**  
+### **♣ 인덱스 (INDEX)**  
 ---  
 
 · 인덱스는 자료를 빠르고 효율적으로 검색하기 위해 사용한다.  
@@ -16,7 +23,7 @@
 [ 단점 ] 추가 DB 공간 필요, 잦은 변경작업으로 인한 성능저하  
 > 변경이 잦고 양이 많은 데이터에는 인덱스를 만들지 않는 것이 성능상 유리하다.  
 
-① 인덱스 개념  
+### ① 인덱스 개념  
 
 <참고> {} : 반복, [] : 생략가능, | : 선택  
 ```sql
@@ -31,7 +38,7 @@ CREATE [UNIQUE] INDEX 인덱스명 ON 테이블명 (속성명 ASC | DESC);
 CREATE UNIQUE INDEX Student_idx ON Student(st_num ASC);
 ```
 
-② 인덱스 구조  
+### ② 인덱스 구조  
 2-1. B-트리 : 효율 증대를 위해 균형있는 트리구조 차용 → Balanced Tree Index  
 
 ★ 검색은 루트노드에서부터 시작한다. → 업다운방식  
