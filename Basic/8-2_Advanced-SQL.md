@@ -60,3 +60,45 @@ CREATE UNIQUE INDEX Student_idx ON Student(st_num ASC);
 ★ 클러스터와 넌 클러스터  
 검색 방식은 동일 (최상위 인덱스에서 검색하고 하위 페이지에서 데이터 탐색)  
 테이블 재구성 여부만 다름 (N-CI는 인덱스와 루트인덱스 2개 생성)  
+
+### ③ 인덱스 정의어 : DDL문 사용
+1 인덱스 생성
+```ts
+CREATE [UNIQUE] INDEX 인덱스명 ON 테이블명 (속성명 [ASC | DESC]) [CLUSTER];
+```
+★ UNIQUE : 중복값 없이 모든 인덱스값이 고유값을 갖도록 지정  
+★ ON__(__) : 인덱스를 만들 속성을 지정 → 복합인덱스 가능 (ON 학생(이름,점수))  
+★ ASC/DESC : 오름차순/내림차순  
+★ CLUSTER : 선언 시 클러스터드 인덱스로 설정  
+※ 검색의 효율화를 위해 클러스터드가 지향되나, 상황에따라 판단  
+
+2 인덱스 제거  
+```ts
+DROP INDEX 인덱스명;
+ALTER TABLE 테이블명 DROP 인덱스명;
+```
+★ DROP INDEX : 독립 인덱스 제거  
+★ ALTER ~ DROP : 종속 인덱스 제거  
+```sql
+-- '이름' 인덱스를 제거
+DROP INDEX idx_st_name;
+-- PK 인덱스, PK 제약조건 모두 제거
+ALTER TABLE Student DROP PRIMARY KEY;
+-- UNIQUE 인덱스 제거
+ALTER TABLE Student DROP CONSTRAINT uk_phone;
+```
+
+3 인덱스 수정 : 기존 인덱스를 DROP 후 재생성함  
+```ts
+ALTER [UNIQUE] INDEX 인덱스명 ON 테이블명 (속성명 [ASC | DESC]);
+```
+※ 인덱스를 수정하는 경우는 매우 드물며, 일부 DBMS는 수정쿼리를 제공하지 않음 → 출제가능성 낮음 (이해만)  
+
+&nbsp;
+
+<a id="VIEW"></a>
+
+---
+### **♣ 뷰 (VIEW)**  
+---  
+
