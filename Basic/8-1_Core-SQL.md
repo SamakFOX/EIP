@@ -1,9 +1,9 @@
 # 8-1. 기본 SQL
 
 ## 목차
-- [DDL](#DDL)
-- [DML](#DML)
-- [DCL](#DCL)
+- [1. DDL](#DDL)
+- [2. DML](#DML)
+- [3. DCL](#DCL)
 
 <a id="DDL"></a>
 
