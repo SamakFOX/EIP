@@ -311,3 +311,26 @@ COMMIT;
 DELETE FROM Student WHERE st_name = '최설이';
 ROLLBACK;
 ```
+
+### ② GRANT / REVOKE  
+### GRANT : 관리자가 사용자에게 DB에 대한 권한을 부여  
+```ts
+GRANT 권한내용 ON 테이블명 TO 사용자 [WITH GRANT OPTION];
+```
+★ WITH GRANT OPTION : 사용자가 다른 사용자에게 권한을 부여할 수 있도록 설정  
+```sql
+GRANT UPDATE ON Student TO st_submaster WITH GRANT OPTION;
+```
+&nbsp;
+### REVOKE : 관리자가 부여한 권한을 취소  
+```ts
+REVOKE 권한내용 ON 테이블명 FROM 사용자 [CASCADE];
+```
+★ CASCADE : 사용자가 부여한 다른 사용자들의 권한도 연쇄 취소  
+```sql
+REVOKE UPDATE ON Student FROM st_submaster CASCADE;
+```
+&nbsp;
+### 다음 글 계속 읽기 →
+| 8-2. 고급 SQL 작성 | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/8-2_Advanced-SQL.md)   |
+|:---:|:---:|
