@@ -105,7 +105,7 @@ ALTER [UNIQUE] INDEX 인덱스명 ON 테이블명 (속성명 [ASC | DESC]);
 · 물리적 기억공간을 차지하지 않으며, 논리적 독립성을 제공  
 · SELECT문은 사용자가 검색한 일부를 보여주기 위한 임시테이블 → 이후에도 사용하려면 뷰를 직접 생성  
 
-### ① 뷰의 생성  
+### ① 뷰 생성  
 ```ts
 CREATE VIEW 뷰명 [(뷰속성명)]
 AS SELECT 기본테이블속성명
@@ -122,3 +122,25 @@ AS SELECT st_id, st_name, st_phone FROM Student WHERE SUBSTR(st_id, 1, 2) <= '22
 CREAT VIEW ThirdGradeContact 
 AS SELECT st_id, st_name, st_phone FROM Student WHERE SUBSTR(st_id, 1, 2) <= '22';
 ```
+
+### ② 뷰 삭제
+```ts
+DROP VIEW 뷰명 [RISTRICT | CASCADE];
+```
+★ RISTRICT : 참조(이용)중이면 삭제하지 않음  
+★ CASCADE : 참조(이용)중이라도 삭제  
+```sql
+-- example을 참조하는 뷰 A 생성
+CREATE VIEW A AS SELECT * FROM example;
+-- A를 참조하는 뷰 B 생성
+CREATE VIEW B AS SELECT ex1 FROM A;
+-- 뷰 A를 연쇄삭제 (A B 모두 삭제됨)
+DROP VIEW A CASCADE;
+```
+
+### ③ 뷰 특징
+　- 기본테이블이 제거되면 뷰도 제거됨  
+　- 뷰 속성에 기본테이블의 기본키가 포함되어있지 않으면 삽입, 삭제, 갱신이 되지 않음  
+　- ALTER로 변경 불가  
+　- 한번 정의된 뷰는 변경이 불가, 삭제 후 재생성해야함  
+ 
