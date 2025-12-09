@@ -115,10 +115,10 @@ AS SELECT 기본테이블속성명
 ★ 기본테이블의 속성과 뷰 속성명은 다르게 부여할 수 있음  
 ★ WITH CHECK OPTION : 뷰의 생성, 수정, 삽입 시 WHERE 조건에 맞지 않으면 실행되지 않도록 함  
 ```sql
--- (id, name, contact) 속성으로 '3rd Contact' 뷰 생성, Student 테이블에서 3학년만 필터링
-CREAT VIEW 3rd Contact (id, name, contact)
+-- (id, name, contact) 속성으로 'ThirdGradeContact' 뷰 생성, Student 테이블에서 3학년만 필터링
+CREAT VIEW ThirdGradeContact (id, name, contact)
 AS SELECT st_id, st_name, st_phone FROM Student WHERE SUBSTR(st_id, 1, 2) <= '22';
--- Student 테이블 기본속성대로 '3rd Contact' 뷰 생성, 결과는 동일하나 속성명이 달라짐
-CREAT VIEW 3rd Contact 
+-- Student 테이블 기본속성대로 'ThirdGradeContact' 뷰 생성, 결과는 동일하나 속성명이 달라짐
+CREAT VIEW ThirdGradeContact 
 AS SELECT st_id, st_name, st_phone FROM Student WHERE SUBSTR(st_id, 1, 2) <= '22';
 ```
