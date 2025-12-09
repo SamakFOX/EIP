@@ -101,9 +101,9 @@ ALTER [UNIQUE] INDEX 인덱스명 ON 테이블명 (속성명 [ASC | DESC]);
 ---
 ### **♣ 뷰 (VIEW)**  
 ---  
-· 뷰는 하나 이상의 테이블로부터 유도되어 만들어진 가상테이블 (임시테이블)  
+· 뷰는 하나 이상의 테이블로부터 유도되어 만들어진 가상테이블  
 · 물리적 기억공간을 차지하지 않으며, 논리적 독립성을 제공  
-· SELECT문은 사용자가 검색한 일부를 보여주기 위한 임시테이블 (이후에도 사용하려면 뷰를 직접 생성)  
+· SELECT문은 사용자가 검색한 일부를 보여주기 위한 임시테이블 → 이후에도 사용하려면 뷰를 직접 생성  
 
 ### ① 뷰의 생성  
 ```ts
@@ -114,3 +114,11 @@ AS SELECT 기본테이블속성명
 ```
 ★ 기본테이블의 속성과 뷰 속성명은 다르게 부여할 수 있음  
 ★ WITH CHECK OPTION : 뷰의 생성, 수정, 삽입 시 WHERE 조건에 맞지 않으면 실행되지 않도록 함  
+```sql
+-- (id, name, contact) 속성으로 '3rd Contact' 뷰 생성, Student 테이블에서 3학년만 필터링
+CREAT VIEW 3rd Contact (id, name, contact)
+AS SELECT st_id, st_name, st_phone FROM Student WHERE SUBSTR(st_id, 1, 2) <= '22';
+-- Student 테이블 기본속성대로 '3rd Contact' 뷰 생성, 결과는 동일하나 속성명이 달라짐
+CREAT VIEW 3rd Contact 
+AS SELECT st_id, st_name, st_phone FROM Student WHERE SUBSTR(st_id, 1, 2) <= '22';
+```
