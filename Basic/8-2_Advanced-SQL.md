@@ -41,13 +41,12 @@ CREATE UNIQUE INDEX Student_idx ON Student(st_num ASC);
 ### ② 인덱스 구조  
 2-1. B-트리 : 효율 증대를 위해 균형있는 트리구조 차용 → Balanced Tree Index  
 ![B-Tree](https://github.com/SamakFOX/EIP/blob/main/ExampleImages/B-Tree.png)
-
 ★ 검색은 루트노드에서부터 시작한다. → 업다운방식  
 ★ 모든 리프노드(단말노드)는 같은 레벨에 있다.  
 ★ 차수가 m일때 루트노드와 리프노드를 제외한 모든 노드는 최소 m/2개 최대 m개의 서브트리를 갖는다.  
 
 2-2. B<sup>+</sup>-트리 : B 트리의 변형으로, 인덱스세트와 순차세트가 있음  
-
+![B+-Tree](https://github.com/SamakFOX/EIP/blob/main/ExampleImages/B%2B-Tree.png)
 ★ 순차세트의 단말노드에는 모든 키 값이 다시 나타나므로, 단말노드 만으로도 순차 검색이 가능  
 
 2-3. 클러스터드 인덱스 (Clustered Index) : 하나의 속성으로 정렬 후 테이블을 재구성하여 인덱스 생성  
