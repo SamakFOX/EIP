@@ -40,6 +40,7 @@ CREATE UNIQUE INDEX Student_idx ON Student(st_num ASC);
 
 ### ② 인덱스 구조  
 2-1. B-트리 : 효율 증대를 위해 균형있는 트리구조 차용 → Balanced Tree Index  
+![B-Tree](https://github.com/SamakFOX/EIP/blob/main/ExampleImages/B-Tree.png)
 
 ★ 검색은 루트노드에서부터 시작한다. → 업다운방식  
 ★ 모든 리프노드(단말노드)는 같은 레벨에 있다.  
