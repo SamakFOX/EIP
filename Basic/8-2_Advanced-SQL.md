@@ -63,7 +63,7 @@ CREATE UNIQUE INDEX Student_idx ON Student(st_num ASC);
 테이블 재구성 여부만 다름 (논클러스터는 인덱스와 루트인덱스 2개 생성)  
 
 ### ③ 인덱스 정의어 : DDL문 사용
-　**1. 인덱스 생성**
+&nbsp;**1. 인덱스 생성**
 ```ts
 CREATE [UNIQUE] INDEX 인덱스명 ON 테이블명 (속성명 [ASC | DESC]) [CLUSTER];
 ```
@@ -73,7 +73,7 @@ CREATE [UNIQUE] INDEX 인덱스명 ON 테이블명 (속성명 [ASC | DESC]) [CLU
 ★ CLUSTER : 선언 시 클러스터드 인덱스로 설정  
 ※ 검색의 효율화를 위해 클러스터드가 지향되나, 상황에따라 판단  
 
-　**2. 인덱스 제거**  
+&nbsp;**2. 인덱스 제거**  
 ```ts
 DROP INDEX 인덱스명;
 ALTER TABLE 테이블명 DROP 인덱스명;
@@ -89,7 +89,7 @@ ALTER TABLE Student DROP PRIMARY KEY;
 ALTER TABLE Student DROP CONSTRAINT uk_phone;
 ```
 
-　**3. 인덱스 수정** : 기존 인덱스를 DROP 후 재생성함  
+&nbsp;**3. 인덱스 수정** : 기존 인덱스를 DROP 후 재생성함  
 ```ts
 ALTER [UNIQUE] INDEX 인덱스명 ON 테이블명 (속성명 [ASC | DESC]);
 ```
@@ -295,3 +295,19 @@ FROM Student
 );
 ```
 
+### ③ 집합(SET) 연산자
+&nbsp;· SELECT문의 질의 결과로 얻은 두 테이블을 집합 단위 연산  
+
+&nbsp;**1. 집합연산자의 종류**  
+| 연산자 | 해석 |
+|---|---|
+| UNION | 결과를 합치고 중복을 제거 |
+| UNION ALL | 결과를 합치고 중복을 포함 |
+| INTERSECT | 결과 행 중 공통되는 행 |
+| MINUS | 첫 질의 결과에서 두번째 질의 결과 행을 제거한 값 |
+
+&nbsp;**2. 유의사항**  
+&nbsp;&nbsp;- 질의 결과는 컬럼 수가 반드시 같아야 함  
+&nbsp;&nbsp;- 질의 결과는 컬럼의 자료형이 반드시 같아야 함  
+&nbsp;&nbsp;- MINUS는 SELECT 순서에 따라 결과가 다름  
+&nbsp;&nbsp;- 각 집합 SELECT는 ORDER BY절을 포함 X, 전체결과엔 O  
