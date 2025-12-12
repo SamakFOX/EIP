@@ -63,7 +63,7 @@ CREATE UNIQUE INDEX Student_idx ON Student(st_num ASC);
 테이블 재구성 여부만 다름 (N-CI는 인덱스와 루트인덱스 2개 생성)  
 
 ### ③ 인덱스 정의어 : DDL문 사용
-　1. 인덱스 생성
+　**1. 인덱스 생성**
 ```ts
 CREATE [UNIQUE] INDEX 인덱스명 ON 테이블명 (속성명 [ASC | DESC]) [CLUSTER];
 ```
@@ -73,7 +73,7 @@ CREATE [UNIQUE] INDEX 인덱스명 ON 테이블명 (속성명 [ASC | DESC]) [CLU
 ★ CLUSTER : 선언 시 클러스터드 인덱스로 설정  
 ※ 검색의 효율화를 위해 클러스터드가 지향되나, 상황에따라 판단  
 
-　2. 인덱스 제거  
+　**2. 인덱스 제거**  
 ```ts
 DROP INDEX 인덱스명;
 ALTER TABLE 테이블명 DROP 인덱스명;
@@ -89,7 +89,7 @@ ALTER TABLE Student DROP PRIMARY KEY;
 ALTER TABLE Student DROP CONSTRAINT uk_phone;
 ```
 
-　3. 인덱스 수정 : 기존 인덱스를 DROP 후 재생성함  
+　**3. 인덱스 수정** : 기존 인덱스를 DROP 후 재생성함  
 ```ts
 ALTER [UNIQUE] INDEX 인덱스명 ON 테이블명 (속성명 [ASC | DESC]);
 ```
