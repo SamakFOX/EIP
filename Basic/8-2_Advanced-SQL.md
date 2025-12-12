@@ -167,7 +167,7 @@ DROP VIEW A CASCADE;
 · 서브쿼리는 비교연산자의 오른쪽에 기술하며, 반드시 소괄호 () 안에서 사용  
 · 서브쿼리는 ORER BY 절을 사용 X → 서브쿼리는 정렬 X  
 
-### ★ 단일 행 서브쿼리 (Single Row) : 결과로 오직 하나의 행(row)만 반환  
+### 1-1. 단일 행 서브쿼리 (Single Row) : 결과로 오직 하나의 행(row)만 반환  
 > 메인쿼리의 WHERE절에서는 단일 행 비교연산자 사용  
 > (=, <>, >, >=, <, <=)  
 
@@ -193,7 +193,7 @@ WHERE score > (
 );
 ```
 
-### ★ 다중 행 서브쿼리 (Multiple Row) : 결과로 여러 행(row) 반환
+### 1-2. 다중 행 서브쿼리 (Multiple Row) : 결과로 여러 행(row) 반환
 > 메인쿼리의 WHERE절에서는 단일 행 비교연산자 사용  
 > (IN, ANY/SOME, ALL, EXISTS)  
 
@@ -223,7 +223,7 @@ SELECT * FROM Grade
 WHERE score >= ANY (
   SELECT score FROM Grade WHERE name = '최설이'
 );
--- 특정 학과에서 1등을 검색 (10013학과 모두보다 큰 점수 검색)
+-- 특정 학과의 1등을 검색, 서브쿼리 (10013학과 인원 모두보다 큰 점수 검색)
 SELECT * FROM Grade
 WHERE dept_id = 10013
   AND score >= ALL (
@@ -236,3 +236,11 @@ WHERE dept_id = 10013
 > **DBMS에서 매우 중요한 연산**  
 > **정규화된 테이블을 JOIN해서 사용**
 
+### 1-1. 조인의 종류
+　· 논리적 조인 : SQL 작성 시 사용하는 알고리즘 (Inner, Outer, Self, Cross)   
+　· 물리적 조인 : DBMS가 실제 쿼리를 실행할 때 선택하는 처리 알고리즘 (Nested Loop, Sort-Merge, Hash)  
+
+| 알고리즘 | 방식 |
+|---|---|
+| 내부 조인<br>(Inner Join) | 동등조인 (Equi Join) : 동일 컬럼을 기준으로 조합<br>비동등조인(Non-Equi Join) : 동일 컬럼 없이 다른 조건 이용 |
+ 
