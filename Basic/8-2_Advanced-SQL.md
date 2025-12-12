@@ -168,7 +168,8 @@ DROP VIEW A CASCADE;
 · 서브쿼리는 ORER BY 절을 사용 X → 서브쿼리는 정렬 X  
 
 ### ★ 단일 행 서브쿼리 (Single Row) : 결과로 오직 하나의 행(row)만 반환  
-> 메인쿼리의 WHERE절에서는 단일 행 비교연산자 사용 (=, <>, >, >=, <, <=)
+> 메인쿼리의 WHERE절에서는 단일 행 비교연산자 사용  
+> (=, <>, >, >=, <, <=)  
 
 | 연산자 | 해석 |
 |---|---|
@@ -193,7 +194,8 @@ WHERE score > (
 ```
 
 ### ★ 다중 행 서브쿼리 (Multiple Row) : 결과로 여러 행(row) 반환
-> 메인쿼리의 WHERE절에서는 단일 행 비교연산자 사용 (IN, ANY/SOME, ALL, EXISTS)  
+> 메인쿼리의 WHERE절에서는 단일 행 비교연산자 사용  
+> (IN, ANY/SOME, ALL, EXISTS)  
 
 | 연산자 | 해석 |
 |---|---|
@@ -203,12 +205,15 @@ WHERE score > (
 | ALL | 모든 값이 조건을 만족하면 참 |
 | EXISTS | 서브쿼리 결과가 존재하면 참 |
 
+※ 참일 경우 해당 행 리턴
+
 ```sql
--- 점수 80점 이상인 학과(dept_id)에 속한 모든 학생 검색 (IN, =ANY 동일결과)
+-- 점수 80점 이상인 학과(dept_id)에 속한 모든 학생 검색
 SELECT * FROM Grade
 WHERE dept_id IN (
   SELECT dept_id from Grade WHERE score >= 80
 );
+-- IN, =ANY 동일결과
 SELECT * FROM Grade
 WHERE dept_id = ANY (
   SELECT dept_id from Grade WHERE score >= 80
