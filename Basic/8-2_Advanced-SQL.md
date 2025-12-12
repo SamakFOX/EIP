@@ -147,7 +147,8 @@ DROP VIEW A CASCADE;
 
 ### 시스템 카탈로그 (System Catalog)  
 
-DB 내 개체들에 대한 정보와, 정보들 간의 관계를 저장한 것  
+> DB 내 개체들에 대한 정보와, 정보들 간의 관계를 저장한 것  
+
 ★ 데이터 사전(Data Dictionary) 라고도 한다  
 ★ 사용자가 SQL문을 실행하면 시스템(DBMS)에 의해 자동 갱신  
 
@@ -167,17 +168,66 @@ DB 내 개체들에 대한 정보와, 정보들 간의 관계를 저장한 것
 · 서브쿼리는 ORER BY 절을 사용 X → 서브쿼리는 정렬 X  
 
 ### ★ 단일 행 서브쿼리 (Single Row) : 결과로 오직 하나의 행(row)만 반환  
-메인쿼리의 WHERE절에서는 단일 행 비교연산자 사용 (=, <>, >, >=, <, <=)  
+> 메인쿼리의 WHERE절에서는 단일 행 비교연산자 사용 (=, <>, >, >=, <, <=)
+
+| 연산자 | 해석 |
+|---|---|
+| = | 같다 |
+| <> | 다르다 |
+| > | 초과 |
+| >= | 이상 |
+| < | 미만 |
+| <= | 이하 |
+
 ```sql
 -- 최설이 학생의 학과와 동일한 학과생들을 성적 테이블에서 검색
-SELECT * FROM Grade WHERE dept_id = (
-SELECT dept_id FROM Grade WHERE name = '최설이'
+SELECT * FROM Grade
+WHERE dept_id = (
+  SELECT dept_id FROM Grade WHERE name = '최설이'
 );
 -- 최설이 학생의 점수보다 높은 학과생들을 성적 테이블에서 검색
-SELECT * FROM Grade WHERE score > (
-SELECT score FROM Grade WHERE name = '최설이'
+SELECT * FROM Grade
+WHERE score > (
+  SELECT score FROM Grade WHERE name = '최설이'
 );
 ```
 
+### ★ 다중 행 서브쿼리 (Multiple Row) : 결과로 여러 행(row) 반환
+> 메인쿼리의 WHERE절에서는 단일 행 비교연산자 사용 (IN, ANY/SOME, ALL, EXISTS)  
 
-메인쿼리의 WHERE절에서는 단일 행 비교연산자 사용 (IN, ANY/SOME, ALL, EXISTS)  
+| 연산자 | 해석 |
+|---|---|
+| IN | 하나라도 조건을 만족하면 참 |
+| ANY | 하나 이상 조건을 만족하면 참 |
+| SOME | 하나 이상 조건을 만족하면 참 |
+| ALL | 모든 값이 조건을 만족하면 참 |
+| EXISTS | 서브쿼리 결과가 존재하면 참 |
+
+```sql
+-- 점수 80점 이상인 학과(dept_id)에 속한 모든 학생 검색 (IN, =ANY 동일결과)
+SELECT * FROM Grade
+WHERE dept_id IN (
+  SELECT dept_id from Grade WHERE score >= 80
+);
+SELECT * FROM Grade
+WHERE dept_id = ANY (
+  SELECT dept_id from Grade WHERE score >= 80
+);
+-- '최설이' 학생의 점수 중 하나 이상보다 크거나 같은 학생 검색
+SELECT * FROM Grade
+WHERE score >= ANY (
+  SELECT score FROM Grade WHERE name = '최설이'
+);
+-- 특정 학과에서 1등을 검색 (10013학과 모두보다 큰 점수 검색)
+SELECT * FROM Grade
+WHERE dept_id = 10013
+  AND score >= ALL (
+    SELECT score FROM Grade WHERE dept_id = 10013
+);
+```
+
+### ② 조인 (JOIN)
+> 둘 이상의 테이블로브ㅜ터 특정 공통값을 갖는 행을 연결하거나 조합  
+> **DBMS에서 매우 중요한 연산**  
+> **정규화된 테이블을 JOIN해서 사용**
+
