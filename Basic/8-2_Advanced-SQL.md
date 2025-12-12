@@ -108,8 +108,8 @@ ALTER [UNIQUE] INDEX 인덱스명 ON 테이블명 (속성명 [ASC | DESC]);
 
 ### ① 뷰 생성  
 ```ts
-CREATE VIEW 뷰명 [(뷰속성명)]
-AS SELECT 기본테이블속성명
+CREATE VIEW 뷰명 [(뷰_속성명)]
+AS SELECT 기본테이블_속성명
 [WHERE 조건]
 [WITH CHECK OPTION];
 ```
