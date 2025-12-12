@@ -49,13 +49,14 @@ CREATE UNIQUE INDEX Student_idx ON Student(st_num ASC);
 ![B+-Tree](https://github.com/SamakFOX/EIP/blob/main/ExampleImages/B%2B-Tree.png)
 ★ 순차세트의 단말노드에는 모든 키 값이 다시 나타나므로, 단말노드 만으로도 순차 검색이 가능  
 
-2-3. 클러스터드 인덱스 (Clustered Index) : 하나의 속성으로 정렬 후 테이블을 재구성하여 인덱스 생성 ![ClusteredIndex](https://github.com/SamakFOX/EIP/blob/main/ExampleImages/ClusteredIndex.png)
+2-3. 클러스터드 인덱스 (Clustered Index) : 하나의 속성으로 정렬 후 테이블을 재구성하여 인덱스 생성  
+![ClusteredIndex](https://github.com/SamakFOX/EIP/blob/main/ExampleImages/ClusteredIndex.png)
 ※ 진행방식 : 정렬 → 테이블 재구성 → Page 분리 → 인덱싱  
 ※ 테이블을 재구성하므로, 한 테이블에 한개의 인덱스만 생성 가능  
 
 2-4. 넌 클러스터드 인덱스 (Non Clustered Index) : 테이블을 재구성하지 않고, 데이터 주소로 인덱스 생성  
+![NonClusteredIndex](https://github.com/SamakFOX/EIP/blob/main/ExampleImages/NonClusteredIndex.png)
 ※ 진행방식 : Page 분리 → ROW ID로 구성된 인덱스 생성 → Root 인덱스 생성  
-
 
 ★ 클러스터와 넌 클러스터  
 검색 방식은 동일 (최상위 인덱스에서 검색하고 하위 페이지에서 데이터 탐색)  
