@@ -60,7 +60,7 @@ CREATE UNIQUE INDEX Student_idx ON Student(st_num ASC);
 
 ★ 클러스터와 넌 클러스터  
 검색 방식은 동일 (최상위 인덱스에서 검색하고 하위 페이지에서 데이터 탐색)  
-테이블 재구성 여부만 다름 (N-CI는 인덱스와 루트인덱스 2개 생성)  
+테이블 재구성 여부만 다름 (논클러스터는 인덱스와 루트인덱스 2개 생성)  
 
 ### ③ 인덱스 정의어 : DDL문 사용
 　**1. 인덱스 생성**
@@ -232,15 +232,66 @@ WHERE dept_id = 10013
 ```
 
 ### ② 조인 (JOIN)
-> 둘 이상의 테이블로브ㅜ터 특정 공통값을 갖는 행을 연결하거나 조합  
+> 둘 이상의 테이블로부터 특정 공통값을 갖는 행을 연결하거나 조합  
 > **DBMS에서 매우 중요한 연산**  
 > **정규화된 테이블을 JOIN해서 사용**
 
 ### 1-1. 조인의 종류
-　· 논리적 조인 : SQL 작성 시 사용하는 알고리즘 (Inner, Outer, Self, Cross)   
-　· 물리적 조인 : DBMS가 실제 쿼리를 실행할 때 선택하는 처리 알고리즘 (Nested Loop, Sort-Merge, Hash)  
+&nbsp;· 논리적 조인 : SQL 작성 시 사용하는 알고리즘 (Inner, Outer, Self, Cross)   
+&nbsp;· 물리적 조인 : DBMS가 실제 쿼리를 실행할 때 선택하는 처리 알고리즘 (Nested Loop, Sort-Merge, Hash)  
 
 | 알고리즘 | 방식 |
 |---|---|
 | 내부 조인<br>(Inner Join) | 동등조인 (Equi Join) : 동일 컬럼을 기준으로 조합<br>비동등조인(Non-Equi Join) : 동일 컬럼 없이 다른 조건 이용 |
- 
+| 외부 조인<br>(Outer Join) | 조인 조건에 만족하지 않는 행도 나타냄<br>(Left Outer, Right Outer, Full Outer) |
+| 셀프 조인<br>(Self Join) | 한 테이블 내에서 조인 |
+| 교차 조인<br>(Cross Join) | 조인 조건이 생략되어 모든 조합행을 나타냄 ← 보통 실수<br>(Cartisian Product, 카티션 곱) |
+
+### 1-2. 컬럼명 모호성 해결
+&nbsp;- 테이블에 별칭 부여 [ *테이블명.컬럼명* ] 사용  
+&nbsp;- 단일 테이블보다는 JOIN시 사용되는 경우가 많음  
+&nbsp;- Oracle : `FROM 테이블 T` / MySQL : `FROM 테이블 AS T`
+```sql
+SELECT Student.st_name, Student.dept_id FROM Student;
+SELECT S.st_name, S.dept_id FROM Student S;
+```
+
+### 1-3. 교차 조인 (Cross Join)
+&nbsp;- Cartisian Product (카티션 프로덕트)  
+&nbsp;- 결과는 두 테이블의 디그리 합과 카디널리티의 곱  
+
+### 1-4. 동등 조인 (Equi Join)
+&nbsp;★ 가장 많이 사용
+&nbsp;- 공통적으로 존재하는 컬럼의 <mark>값이 일치되는 공통 행을 연결</mark>하여 결과 생성  
+&nbsp;- WHERE절에 반드시 1개 이상의 조인 조건, `=` 비교연산자 사용  
+```sql
+SELECT s.st_name, d.dept_name
+FROM Student s, Department d
+  WHERE e.dept_id = d.dept_id;
+```
+※ 외래키와 기본키가 같은 값일 때 연결 → `e.dept_id : FK` / `d.dept_id : PK` 조인 조건  
+
+&nbsp; ㄴ 결과에 dept_id가 두번 나오게 됨 → Natural Join의 필요성   
+
+### 1-5. 자연 조인 (Natural Join)
+&nbsp;★ ANSI SQL 표준 → 대부분 DBMS에서 사용  
+&nbsp;- 공통 컬럼을 자동으로 조사하여 조인 수행  
+&nbsp;&nbsp;&nbsp; ㄴ 같은 컬럼이지만 데이터가 다를 경우 데이터 누락 → 제어가 어려움  
+&nbsp;- FROM절에 NATURAL INNER JOIN을 명시하여 간결히 조인 (INNER 생략 가능)  
+```sql
+-- 학생과 학과 테이블 조인
+SELECT * FROM Student NATURAL INNER JOIN Department;
+```
+
+### 1-6. JOIN ~ ON ~ ;
+&nbsp;- 두 테이블을 JOIN 연산한 뒤 자료를 검색  
+&nbsp;- 검색내용 `테이블1` JOIN `테이블2` ON `조인조건`;  
+```sql
+-- 학생과 학과 테이블 조인
+SELECT * st_name, dept_id, dept_amount
+FROM Student
+  JOIN Department ON (
+    Student.dept_id = Department.dept_id
+);
+```
+
