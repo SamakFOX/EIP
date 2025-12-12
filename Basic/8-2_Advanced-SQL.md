@@ -145,3 +145,33 @@ DROP VIEW A CASCADE;
 　- ALTER로 변경 불가  
 　- 한번 정의된 뷰는 변경이 불가, 삭제 후 재생성해야함  
  
+&nbsp;
+
+<a id="SubQuery"></a>
+
+---
+### **♣ 다중 테이블 검색**  
+---  
+
+### ① 부속(하위) 질의 : 서브쿼리  
+· 서브쿼리 결과값은 메인쿼리로 반환되어 사용  
+· 서브쿼리는 메인쿼리가 실행되기 이전에 한 번만 실행  
+· 서브쿼리가 반환하는 행 수에 따라 <mark>단일 행 서브쿼리</mark>와 <mark>다중 행 서브쿼리</mark>로 나뉨  
+· 서브쿼리는 비교연산자의 오른쪽에 기술하며, 반드시 소괄호 () 안에서 사용  
+· 서브쿼리는 ORER BY 절을 사용 X → 서브쿼리는 정렬 X  
+
+### ★ 단일 행 서브쿼리 (Single Row) : 결과로 오직 하나의 행(row)만 반환  
+메인쿼리의 WHERE절에서는 단일 행 비교연산자 사용 (=, <>, >, >=, <, <=)  
+```sql
+-- 최설이 학생의 학과와 동일한 학과생들을 성적 테이블에서 검색
+SELECT * FROM Grade WHERE dept_id = (
+SELECT dept_id FROM Grade WHERE name = '최설이'
+);
+-- 최설이 학생의 점수보다 높은 학과생들을 성적 테이블에서 검색
+SELECT * FROM Grade WHERE score > (
+SELECT score FROM Grade WHERE name = '최설이'
+);
+```
+
+
+메인쿼리의 WHERE절에서는 단일 행 비교연산자 사용 (IN, ANY/SOME, ALL, EXISTS)  
