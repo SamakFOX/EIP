@@ -157,3 +157,10 @@ GROUP BY CUBE(dept_id, grade);
 |:---:|---|
 | 집계 분석 | SUM(), AVG(), MAX(), MIN(), COUNT() |
 
+
+
+
+&nbsp;
+### 다음 글 계속 읽기 →
+| 8-4. 절차형 SQL 작성 | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/8-4_Procedural-SQL.md)   |
+|:---:|:---:|
