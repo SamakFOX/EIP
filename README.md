@@ -51,6 +51,7 @@
 SQL : 관계 데이터베이스에서 작업처리를 위해 사용되는 대화식 언어 (DDL / DML / DCL)  
 고급 SQL : INDEX / VIEW / 서브쿼리 / JOIN / SET  
 응용 SQL : 집계함수 / GROUP BY / 윈도우함수  
+절차형 SQL : PL-SQL / 저장 프로시저 / 사용자 정의 함수 / 이벤트&트리거  
 
 | 8-1. 기본 SQL | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/8-1_Core-SQL.md)   |
 |:---:|:---:|
@@ -59,4 +60,7 @@ SQL : 관계 데이터베이스에서 작업처리를 위해 사용되는 대화
 |:---:|:---:|
 
 | 8-3. 응용 SQL 작성 | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/8-3_Applied-SQL.md)   |
+|:---:|:---:|
+
+| 8-4. 절차형 SQL 작성 | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/8-4_Procedural-SQL.md)   |
 |:---:|:---:|
