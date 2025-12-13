@@ -297,6 +297,11 @@ FROM Student
 
 ### ③ 집합(SET) 연산자
 &nbsp;· SELECT문의 질의 결과로 얻은 두 테이블을 집합 단위 연산  
+```ts
+SELECT 컬럼1, 컬럼2, ··· FROM 테이블A
+SET연산자
+SELECT 컬럼1, 컬럼2, ··· FROM 테이블B;
+```
 
 &nbsp;**1. 집합연산자의 종류**  
 | 연산자 | 해석 |
@@ -311,3 +316,56 @@ FROM Student
 &nbsp;&nbsp;- 질의 결과는 컬럼의 자료형이 반드시 같아야 함  
 &nbsp;&nbsp;- MINUS는 SELECT 순서에 따라 결과가 다름  
 &nbsp;&nbsp;- 각 집합 SELECT는 ORDER BY절을 포함 X, 전체결과엔 O  
+
+&nbsp;**3. UNION - 합집합**  
+&nbsp;&nbsp;* 중복행을 제거하고 반환  
+```sql
+-- 두 테이블에서 중복행을 제외하고 모두 검색
+SELECT st_id, st_name FROM Student
+UNION
+SELECT st_id, st_name FROM Graduate;
+```
+
+&nbsp;**4. UNION ALL - 합집합**  
+&nbsp;&nbsp;* 중복행을 포함하여 반환  
+```sql
+-- 두 테이블을 합하여 모두 검색 (중복행도 출력)
+SELECT st_id, st_name FROM Student
+UNION ALL
+SELECT gr_id, gr_name FROM Graduate;
+```
+
+&nbsp;**5. INTERSECT - 교집합**  
+&nbsp;&nbsp;* 공통 행만 반환  
+&nbsp;&nbsp;* MySQL, MariaDB는 미지원  
+```sql
+-- 학생이면서 졸업생인 학생만 검색
+SELECT st_id, st_name FROM Student
+UNION
+SELECT gr_id, gr_name FROM Graduate;
+```
+
+&nbsp;**6. MINUS - 교집합**  
+&nbsp;&nbsp;* (앞 쿼리 - 뒷 쿼리) 결과를 반환  
+&nbsp;&nbsp;* MySQL, MariaDB는 미지원  
+&nbsp;&nbsp;* ORACLE : MINUS / SQLite : EXCEPT  
+```sql
+-- 학생이면서 졸업생이 아닌 학생만 검색
+SELECT st_id, st_name FROM Student
+MINUS
+SELECT gr_id, gr_name FROM Graduate;
+```
+
+### SET 연산 예시
+Student 테이블, Graduate 테이블의 컬럼이 다음과 같다고 가정할 때  
+| st_id | st_name | gr_id | gr_name |
+|---|---|---|---|
+| 1 | 이하나 | 4 | 이넷 |
+| 2 | 이둘 | 7 | 김하나 |
+| 3 | 이셋 | 2 | 이둘 |
+| 4 | 이넷 | 3 | 이셋 |
+
+UNION : 중복 제거되어 1,2,3,4,7 학생 행 출력  
+UNION ALL : 중복 포함하여 1,2,3,4,4,7,2,3 학생 행 출력  
+INTERSECT : 공통 행인 2,3,4 학생 행 출력  
+MINUS : 뒤 쿼리 결과를 제거하여 1 학생 행 출력  
