@@ -305,7 +305,7 @@ SELECT 컬럼1, 컬럼2, ··· FROM 테이블B;
 ```
 
 &nbsp;**3-1. 집합연산자의 종류**  
-![SET](https://github.com/SamakFOX/EIP/blob/main/ExampleImages/SET.png)
+<img src="https://github.com/SamakFOX/EIP/blob/main/ExampleImages/SET.png" width="500"/>
 | 연산자 | 해석 |
 |---|---|
 | UNION | 결과를 합치고 중복을 제거 |
