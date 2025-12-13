@@ -79,6 +79,9 @@ GROUP BY ROLLUP(dept_id, grade);
 ```
 ※ ROUND : 반올림하여 정수로 표현  
 &nbsp;
+| ROLLUP 예시 |
+|---|
+
 예시 데이터가 다음과 같을 때  
 | dept_id | grade | math |
 |---|---|---|
@@ -86,3 +89,16 @@ GROUP BY ROLLUP(dept_id, grade);
 | 10 | 1 | 90 |
 | 10 | 2 | 70 |
 | 20 | 1 | 85 |
+
+ROLLUP(dept_id, grade); 결과  
+| 학과 | 학년 | 수학 평균 |
+|---|---|---|
+| 10 | 1 | 85 |
+| 10 | 2 | 70 |
+| 10 | NULL | 78 |
+| 20 | 1 | 85 |
+| 20 | NULL | 85 |
+| NULL | NULL | 80 |
+
+※ 학과번호는 있으나 학년이 NULL인 행 : 학과 평균  
+※ 학과번호 학년 모두 NULL인 행 : 전체 평균  
