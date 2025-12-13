@@ -39,7 +39,8 @@ SELECT AVG(science) FROM Score;
 -- 갯수 카운트 + (별칭을 AS로 쓰는 경우, AS 없이 쓰는 경우)
 SELECT COUNT(*) AS "학생 수", COUNT(math) "수학 응시생 수" FROM Score;
 ```
-&nbsp;
+
+<a id="GroupBy"></a>
 
 ---
 ### **♣ GROUP BY 절을 사용하는 그룹처리 함수**  
@@ -69,7 +70,8 @@ FROM 테이블명 [, 테이블명 ···]
 &nbsp;&nbsp;- GROUPING SETS : 주어진 컬럼에 대한 다양한 집계 집합  
 &nbsp;
 ### ② ROLLUP 함수
-&nbsp;· 주어진 컬럼 수보다 하나 더 큰 레벨로 반환 → 컬럼수가 N일때 N+1 레벨로 반환  
+&nbsp;· 주어진 컬럼 수보다 하나 더 큰 레벨로 반환  
+&nbsp;&nbsp; → 매개변수로 주어진 컬럼수가 N일때 N+1 레벨로 반환  
 &nbsp;! ROLLUP 함수의 컬럼들은 모두 SELECT절에 추가되어야 유의미한 결과 분석 가능  
 ```sql
 -- 학과, 학년, 수학평균을 성적테이블에서 검색 + 학과&학년으로 ROLLUP
@@ -100,5 +102,58 @@ ROLLUP(dept_id, grade); 결과
 | 20 | NULL | 85 |
 | NULL | NULL | 80 |
 
-※ 학과번호는 있으나 학년이 NULL인 행 : 학과 평균  
-※ 학과번호 학년 모두 NULL인 행 : 전체 평균  
+※ 학과번호와 학년이 모두 있는 행 : 학과의 학년 평균 : 1레벨  
+※ 학과번호는 있으나 학년이 NULL인 행 : 학과 평균 : 2레벨  
+※ 학과번호 학년 모두 NULL인 행 : 전체 평균 : 3레벨  
+&nbsp;
+### ③ CUBE 함수
+&nbsp;· 결합 가능한 다차원적인 모든 조합에 따라 레벨이 결정됨  
+&nbsp;&nbsp; → 매개변수로 주어진 컬럼 수가 N일때 2<sup>N</sup> 레벨로 반환  
+&nbsp;★ UNION 연산을 반복수행하지 않고도 컬럼 조합에 대한 집계가 가능해 속도가 빠름  
+&nbsp;! CUBE 함수의 컬럼들도 모두 SELECT 절에 추가되어야 유의미한 결과 분석 가능  
+```sql
+-- 학과, 학년, 수학평균을 성적테이블에서 검색 + 학과&학년으로 ROLLUP
+SELECT dept_id 학과, grade 학년, ROUND(AVG(math)) "수학 평균"
+FROM Score
+GROUP BY CUBE(dept_id, grade);
+```
+| CUBE 예시 |
+|---|
+
+예시 데이터가 위 예시와 같을 때 CUBE(dept_id, grade); 결과  
+| 학과 | 학년 | 수학 평균 |
+|---|---|---|
+| 10 | 1 | 85 |
+| 10 | 2 | 70 |
+| 20 | 1 | 85 |
+| 10 | NULL | 80 |
+| 20 | NULL | 85 |
+| NULL | 1 | 85 |
+| NULL | 2 | 70 |
+| NULL | NULL | 81 |
+
+※ 학과번호와 학년이 모두 있는 행 : 학과의 학년 평균 : 1레벨  
+※ 학과번호는 있으나 학년이 NULL인 행 : 학과 평균 : 2레벨  
+※ 학과번호가 NULL이고 학년이 있는 행 : 학년 평균 : 3레벨  
+※ 학과번호 학년 모두 NULL인 행 : 전체 평균 : 4레벨  
+&nbsp;
+### ④ GROUPING SETS 함수
+&nbsp;· 컬럼별 집계를 계산한 후 집계의 결과 튜플(행)만 출력  
+&nbsp;· 인수로 주어지는 컬럼 순서와 상관없이 결과가 같다  
+
+
+<a id="WindowFunc"></a>
+
+---
+### **♣ GROUP BY 절을 사용하지 않는 윈도우함수**  
+---  
+
+### ① 윈도우함수 (Window Function) = 분석함수 (Analytic Function)  
+&nbsp;· 윈도우라는 분석함수용 그룹을 정의하여 계산  
+&nbsp;· SELECT 절에서만 사용 가능  
+&nbsp;· OVER()절은 필수이며, OVER()절에 분석데이터를 기술하지 않으면 전체 행 대상 분석  
+&nbsp;· 서브쿼리에서 사용 가능하나 중첩은 불가능  
+| 함수분야 | 함수명 |
+|:---:|---|
+| 집계 분석 | SUM(), AVG(), MAX(), MIN(), COUNT() |
+
