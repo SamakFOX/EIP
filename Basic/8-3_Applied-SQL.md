@@ -10,7 +10,7 @@
 ---
 ### **♣ 집계함수 (Agregate Function)**  
 ---  
-&nbsp;
+
 ### ① 다중 행 함수
 &nbsp;· 전체 또는 그룹별로 연관 및 계산분석을 한 단일 결과값 반환  
 &nbsp;· GROUP BY 절에서는 기준 컬럼명  
@@ -44,7 +44,7 @@ SELECT COUNT(*) AS "학생 수", COUNT(math) "수학 응시생 수" FROM Score;
 ---
 ### **♣ GROUP BY 절을 사용하는 그룹처리 함수**  
 ---  
-&nbsp;
+
 ### ① SELECT문 문법
 ```ts
 SELECT [ALL | DISTICT]
