@@ -153,10 +153,26 @@ GROUP BY CUBE(dept_id, grade);
 &nbsp;· SELECT 절에서만 사용 가능  
 &nbsp;· OVER()절은 필수이며, OVER()절에 분석데이터를 기술하지 않으면 전체 행 대상 분석  
 &nbsp;· 서브쿼리에서 사용 가능하나 중첩은 불가능  
+```ts
+SELECT 윈도우함수명 (컬럼명, 컬럼명 ···)
+  OVER([PARTITION BY 컬럼명] [ORDER BY] [WINDOWING]
+FROM 테이블명 ···;
+```
 | 함수분야 | 함수명 |
 |:---:|---|
 | 집계 분석 | SUM(), AVG(), MAX(), MIN(), COUNT() |
+| 순위 분석 | RANK(), DENSE_RANK(), ROW_NUMBER() |
+| 순서 분석 | FIRST_VALUE(), LAST_VALUE(), LAG(), READ() |
+| 그룹 비율 | CUME_DIST(), PERCENT_RANK(), NTILE(), RATIO_TO_REPORT() |
+| 통계 분석 | STD_DEV(), VARIANCE() |
 
+※ 순위 분석 함수는 대부분 DBMS에서 지원  
+```sql
+SELECT UNIQUE dept_id, gr_grade,
+  COUNT(*) OVER(PARTITION BY dept_id, grade) 인원수
+FROM Graduate
+ORDER BY dept_id, gr_grade;
+```
 
 
 
