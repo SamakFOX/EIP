@@ -155,9 +155,23 @@ GROUP BY CUBE(dept_id, grade);
 &nbsp;· 서브쿼리에서 사용 가능하나 중첩은 불가능  
 ```ts
 SELECT 윈도우함수명 (컬럼명, 컬럼명 ···)
-  OVER([PARTITION BY 컬럼명] [ORDER BY] [WINDOWING]
+OVER(
+  [PARTITION BY 컬럼명]
+  [ORDER BY 컬럼명 ASC | DESC]
+  [WINDOWING]
 FROM 테이블명 ···;
 ```
+### WINDOWING 구성 요소
+| 요소 | 의미 |
+|---|---|
+| ROWS | 행 단위 기준 |
+| RANGE | 값 범위 기준 |
+| UNBOUNDED PRECEDING |
+| CURRENT ROW | 현재 행 |
+| n PRECEDING | 앞의 n행 |
+| n FOLLOWING | 뒤의 n행 |
+
+### 윈도우 함수 구성 요소
 | 함수분야 | 함수명 |
 |:---:|---|
 | 집계 분석 | SUM(), AVG(), MAX(), MIN(), COUNT() |
@@ -168,8 +182,8 @@ FROM 테이블명 ···;
 
 ※ 순위 분석 함수는 대부분 DBMS에서 지원  
 ```sql
-SELECT UNIQUE dept_id, gr_grade,
-  COUNT(*) OVER(PARTITION BY dept_id, grade) 인원수
+SELECT UNIQUE dept_id, gr_grade, COUNT(*)
+OVER(PARTITION BY dept_id, grade) 인원수
 FROM Graduate
 ORDER BY dept_id, gr_grade;
 ```
