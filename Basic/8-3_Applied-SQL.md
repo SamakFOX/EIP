@@ -166,7 +166,7 @@ FROM 테이블명 ···;
 |---|---|
 | ROWS | 행 단위 기준 |
 | RANGE | 값 범위 기준 |
-| UNBOUNDED PRECEDING |
+| UNBOUNDED PRECEDING | 파티션의 첫 행 |
 | CURRENT ROW | 현재 행 |
 | n PRECEDING | 앞의 n행 |
 | n FOLLOWING | 뒤의 n행 |
