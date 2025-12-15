@@ -182,14 +182,50 @@ FROM 테이블명 ···;
 
 ※ 순위 분석 함수는 대부분 DBMS에서 지원  
 ```sql
-SELECT UNIQUE dept_id, gr_grade, COUNT(*)
-OVER(PARTITION BY dept_id, grade) 인원수
+SELECT UNIQUE dept_id, gr_grade,
+  COUNT(*) OVER(PARTITION BY dept_id, grade) 인원수
 FROM Graduate
 ORDER BY dept_id, gr_grade;
 ```
+&nbsp;
+### ② 순위 계산용 윈도우 함수  
+&nbsp;**· RANK : 전체 또는 윈도우별 행의 순위를 구해줌**  
+&nbsp;&nbsp; ㄴ 동일 값은 동일 순위, 다음 순위는 공동 순위에 따라 증가된 순위값 반환  
+&nbsp;&nbsp; ㄴ ex) 1,2,3,3,3,6,7, ···  
+```sql
+-- 전체 직원에 대한 급여 순위 출력 (급여 기준, 내림차순)
+-- (전체 대상이므로 partition by가 없음)
+SELECT em_dept, em_name, em_salary,
+  RANK() OVER(ORDER BY em_salary DESC) 전체순위
+FROM Employee;
+-- 사원 테이블의 부서별 사원에 대한 급여의 순위 출력 (급여 기준, 내림차순)
+-- 부서별로 순위를 개별출력 ex) 관리부 1,2,2,4,5 교육부 1,2,2,2,5 영업부 1,2,3,4,5
+SELECT em_dept, em_name, em_salary,
+  RANK() OVER(PARTITION BY em_dept ORDER BY em_salary DESC) "부서별 순위"
+FROM Employee;
+```
+&nbsp;**· DENSE_RANK : 전체 또는 윈도우별 행의 순위를 구해줌**  
+&nbsp;&nbsp; ㄴ 동일 값의 순위와 상관없이 1 증가한 순위인 다음 순위값 반환  
+&nbsp;&nbsp; ㄴ ex) 1,2,3,3,3,4,5, ···  
+```sql
+-- 사원 테이블의 부서별 사원에 대한 급여의 순위 출력 (급여 기준, 내림차순)
+-- 부서별로 순위를 개별출력 ex) 관리부 1,2,2,3,4 교육부 1,2,2,2,3 영업부 1,2,3,4,5
+SELECT em_dept, em_name, em_salary,
+  DENSE_RANK() OVER(PARTITION BY em_dept ORDER BY em_salary DESC) "부서별 순위"
+FROM Employee;
+```
+&nbsp;**· ROW_NUMBER : 각 행에 1부터 유일한 순위값 반환**  
+&nbsp;&nbsp; ㄴ 같은 값도 순위가 다름 - 순서  
+&nbsp;&nbsp; ㄴ ex) 1,2,3,4,5,6, ···  
+```sql
+SELECT em_dept, em_name, em_salary,
+  ROW_NUMBER() OVER(ORDER BY em_salary DESC) 순서
+FROM Employee;
+```
+| 윈도우 함수 결과테이블 예시 |
+|---|
 
-
-
+![WindowFunc](https://github.com/SamakFOX/EIP/blob/main/ExampleImages/WindowFunc.png)
 &nbsp;
 ### 다음 글 계속 읽기 →
 | 8-4. 절차형 SQL 작성 | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/8-4_Procedural-SQL.md)   |
