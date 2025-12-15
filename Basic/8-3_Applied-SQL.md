@@ -4,6 +4,7 @@
 - [1. 집계함수](#AggregateFunc)
 - [2. GROUP BY](#GroupBy)
 - [3. 윈도우함수](#WindowFunc)
+&nbsp;
 
 <a id="AggregateFunc"></a>
 
@@ -39,6 +40,7 @@ SELECT AVG(science) FROM Score;
 -- 갯수 카운트 + (별칭을 AS로 쓰는 경우, AS 없이 쓰는 경우)
 SELECT COUNT(*) AS "학생 수", COUNT(math) "수학 응시생 수" FROM Score;
 ```
+&nbsp;
 
 <a id="GroupBy"></a>
 
@@ -140,7 +142,7 @@ GROUP BY CUBE(dept_id, grade);
 ### ④ GROUPING SETS 함수
 &nbsp;· 컬럼별 집계를 계산한 후 집계의 결과 튜플(행)만 출력  
 &nbsp;· 인수로 주어지는 컬럼 순서와 상관없이 결과가 같다  
-
+&nbsp;
 
 <a id="WindowFunc"></a>
 
