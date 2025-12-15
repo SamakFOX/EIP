@@ -191,6 +191,8 @@ ORDER BY dept_id, gr_grade;
 ```
 &nbsp;
 ### ② 순위 계산용 윈도우 함수  
+★ RANK : 석차 / DENSE_RANK : 순위 / ROW_NUMBER : 순서  
+
 &nbsp;**· RANK : 전체 또는 윈도우별 행의 순위를 구해줌**  
 &nbsp;&nbsp; ㄴ 동일 값은 동일 순위, 다음 순위는 공동 순위에 따라 증가된 순위값 반환  
 &nbsp;&nbsp; ㄴ ex) 1,2,3,3,3,6,7, ···  
