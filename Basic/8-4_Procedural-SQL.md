@@ -50,9 +50,9 @@ END CASE;
 ```
 
 &nbsp;
-### ③ 반복문  
+### ⑤ 반복문  
 &nbsp;
-3-1. LOOP  
+5-1. LOOP  
 &nbsp; · EXIT는 무한루프 무조건 탈출  
 &nbsp; · 조건식이 붙으면 조건식이 참일 때 탈출  
 ```ts
@@ -64,7 +64,7 @@ LOOP
 END LOOP;
 ```
 &nbsp;
-3-2. WHILE  
+5-2. WHILE  
 &nbsp; · 조건식이 참일 경우에만 내부 블록 실행  
 ```ts
 WHILE 조건식 LOOP
@@ -74,7 +74,7 @@ WHILE 조건식 LOOP
 END LOOP;
 ```
 &nbsp;
-3-3. FOR-IN  
+5-3. FOR-IN  
 &nbsp; · 첨자변수가 시작값부터 1씩 증가하여 끝값이 될 때까지 내부 블록 실행  
 ```ts
 FOR 첨자변수 IN [REVERSE] 시작값 .. 끝값 LOOP
