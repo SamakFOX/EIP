@@ -120,7 +120,7 @@ END;
 ---
 ### **♣ 저장 프로시저 (Stored Procedure)**  
 ---  
-&nbsp;
+
 ### ① 저장 프로시저 : DB에 저장된 사용자의 PL/SQL 명령문  
 &nbsp; · CREATE PROCEDURE로 프로시저 생성  
 &nbsp; · DECLARE로 생성한 프로시저와 다르게 여러번 반복 호출/사용 가능  
@@ -148,13 +148,13 @@ DROP PROCEDURE 프로시저명;
 EXECUTE del_procedure('최설이');
 DROP PROCEDURE del_procedure;
 ```
-
+&nbsp;
 <a id="UserFunc"></a>
 
 ---
 ### **♣ 사용자 정의 함수 (User Function)**  
 ---  
-&nbsp;
+
 ### ① 사용자 정의 함수 생성  
 &nbsp; ★ 결과를 되돌려받기 위해 반환자료형과 값을 기술해야 함  
 ```ts
