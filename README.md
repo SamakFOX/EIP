@@ -64,3 +64,13 @@ SQL : 관계 데이터베이스에서 작업처리를 위해 사용되는 대화
 
 | 8-4. 절차형 SQL 작성 | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/8-4_Procedural-SQL.md)   |
 |:---:|:---:|
+
+### 09. 소프트웨어 개발 보안 구축
+소프트웨어 개발 보안 설계 : 요구공학 / SW 개발 보안 방법론 / 정보보안 3대요소 / 관련 법률  
+소프트웨어 개발 보안 구현 : 암호화 알고리즘 / 비밀키,공개키,해시 / 서비스 공격 유형 / 서버 인증,접근통제 / 보안 아키텍쳐,보안 솔루션 / 취약점 분석,로그,AAA  
+
+| 9-1. SW 개발 보안 설계 | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/9-1_SWDev-SecureDesign.md)   |
+|:---:|:---:|
+
+| 9-2. SW 개발 보안 구현 | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/9-2_SWDev-SecureImp.md)   |
+|:---:|:---:|
