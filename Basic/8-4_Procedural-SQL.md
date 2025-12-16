@@ -2,8 +2,8 @@
 
 ## 목차
 - [1. 절차형 SQL](#PLSQL)
-- [2. ](#)
-- [3. ](#)
+- [2. 저장 프로시저](#StoredProcedure)
+- [3. 사용자 정의 함수](#UserFunc)
 &nbsp;
 
 <a id="PLSQL"></a>
@@ -33,3 +33,163 @@
 
 &nbsp;
 ### ④ 선택문  
+<참고> {} : 반복, [] : 생략가능, | : 선택  
+```ts
+-- IF-ELSE
+IF 조건식 THEN 명령문; ···
+[ELSE IF 조건식 THEN 명령문; ···]
+[ELSE IF 조건식 THEN 명령문; ···]
+[ELSE 명령문; ···]
+END IF;
+-- CASE (BREAK 없이도 동일하게 동작)
+CASE 변수명
+[WHEN 레이블 THEN 명령문;]
+[WHEN 레이블 THEN 명령문;]
+[ELSE 명령문;]
+END CASE;
+```
+&nbsp;
+### ③ 반복문  
+&nbsp;
+3-1. LOOP  
+&nbsp; · EXIT는 무한루프 무조건 탈출  
+&nbsp; · 조건식이 붙으면 조건식이 참일 때 탈출  
+```ts
+LOOP
+  명령문;
+  명령문;
+  ···
+  EXIT [WHEN 조건식]
+END LOOP;
+```
+&nbsp;
+3-2. WHILE  
+&nbsp; · 조건식이 참일 경우에만 내부 블록 실행  
+```ts
+WHILE 조건식 LOOP
+  명령문;
+  명령문;
+  ···
+END LOOP;
+```
+&nbsp;
+3-3. FOR-IN  
+&nbsp; · 첨자변수가 시작값부터 1씩 증가하여 끝값이 될 때까지 내부 블록 실행  
+```ts
+FOR 첨자변수 IN [REVERSE] 시작값 .. 끝값 LOOP
+  명령문;
+  명령문;
+  ···
+END LOOP;
+```
+```sql
+-- 1부터 5까지 돌며 i 출력
+BEGIN
+  FOR i IN 1..5 LOOP
+    DBMS_OUTPUT.PUT_LINE(i);
+  END LOOP;
+END;
+-- 사원 테이블을 돌며 이름:급여 를 출력
+BEGIN
+  FOR i IN Employee LOOP
+    DBMS_OUTPUT.PUT_LINE(i.em_name || ' : ' || i.em_salary);
+  END LOOP;
+END;
+```
+
+### ★ 프로시저를 통한 출력
+```sql
+-- 출력 가능하도록 설정
+SET SERVEROUTPUT ON;
+-- 내용 출력
+BEGIN
+  < PL/SQL문 >
+  ···
+  DBMS_OUTPUT.PUT_LINE( 출력 내용 );
+END;
+/
+```
+
+<a id="StoredProcedure"></a>
+
+---
+### **♣ 저장 프로시저 (Stored Procedure)**  
+---  
+&nbsp;
+### ① 저장 프로시저 : DB에 저장된 사용자의 PL/SQL 명령문  
+&nbsp; · CREATE PROCEDURE로 프로시저 생성  
+&nbsp; · DECLARE로 생성한 프로시저와 다르게 여러번 반복 호출/사용 가능  
+```ts
+CREATE [OR REPLACE] PROCEDURE 프로시저명 (
+  매개변수명 [모드] 자료형,
+  매개변수명 [모드] 자료형, ···
+)
+IS
+  지역변수 선언문;
+BEGIN
+  명령문;
+  명령문;
+END;
+```
+※ 모드 : IN / OUT / INOUT - 데이터 흐름에 따라 입출력모드 설정  
+&nbsp;
+### ② 저장 프로시저 실행, 제거  
+```ts
+EXECUTE 프로시저명('매개변수');
+DROP PROCEDURE 프로시저명;
+```
+```sql
+EXECUTE del_procedure('최설이');
+DROP PROCEDURE del_procedure;
+```
+
+<a id="UserFunc"></a>
+
+---
+### **♣ 사용자 정의 함수 (User Function)**  
+---  
+&nbsp;
+### ① 사용자 정의 함수 생성  
+&nbsp; ★ 결과를 되돌려받기 위해 반환자료형과 값을 기술해야 함  
+```ts
+CREATE [OR REPLACE] FUNCTION 함수명 (
+  매개변수명 [모드] 자료형,
+  매개변수명 [모드] 자료형, ···
+)
+RETURN 반환형
+IS [AS]
+  지역변수 선언문;
+BEGIN
+  명령문;
+  명령문;
+  ···
+  RETURN 반환값;
+END;
+```
+★ OR REPLACE : 동일 이름일 경우 새 내용으로 교체  
+★ 모드 : IN 매개변수만 사용 가능  
+★ RETURN 반환형 : 필수절, 리턴될 결과의 자료형  
+★ RERUTN 반환값 : 생략불가
+&nbsp;
+### ② 호출 및 출력  
+
+2-1. 함수명으로 호출  
+```sql
+VARIABLE var_rst NUMBER;
+EXECUTE :var_rst := BONUS(1100);
+PRINT var_rst;
+```
+&nbsp;- 자료형이 NUMBER인 var_rst 변수 생성  
+&nbsp;- BONUS(1100)을 호출하여 반환값을 var_rst에 저장
+&nbsp;- var_rst를 출력  
+
+2-2. DML에서 호출  
+```sql
+SELECT BONUS(1100) FROM DUAL;
+```
+
+&nbsp;
+### ③ 제거  
+```sql
+DROP FUNCTION BONUS;
+```
