@@ -209,8 +209,9 @@ DROP FUNCTION BONUS;
 
 ### ① 트리거
 &nbsp; - DB에 이벤트가 발생할 때마다 자동으로 수행되는 저장 프로시저  
-&nbsp;&nbsp; ㄴ DML에 의해 수행되는 '데이터 조작어 기반 트리거'  
-&nbsp;&nbsp; ㄴ DDL에 의해 수행되는 '데이터 정의어 기반 트리거'  
+&nbsp;&nbsp;&nbsp;&nbsp; ㄴ DML에 의해 수행되는 '데이터 조작어 기반 트리거'  
+&nbsp;&nbsp;&nbsp;&nbsp; ㄴ DDL에 의해 수행되는 '데이터 정의어 기반 트리거'  
+
 &nbsp; ★ 행 트리거 (Row-Level Trigger) : 행에 변화가 생길 때 수행, FOR EACH ROW 욥션  
 &nbsp; ★ 문장 트리거 (Statement-Level Trigger) : 이벤트에 의해 단 한번만 수행  
 ```ts
