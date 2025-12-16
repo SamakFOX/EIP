@@ -4,6 +4,7 @@
 - [1. 절차형 SQL](#PLSQL)
 - [2. 저장 프로시저](#StoredProcedure)
 - [3. 사용자 정의 함수](#UserFunc)
+- [4. 이벤트와 트리거](#EvtNTrig)
 &nbsp;
 
 <a id="PLSQL"></a>
@@ -201,7 +202,7 @@ SELECT BONUS(1100) FROM DUAL;
 DROP FUNCTION BONUS;
 ```
 &nbsp;
-<a id="UserFunc"></a>
+<a id="EvtNTrig"></a>
 
 ---
 ### **♣ 이벤트와 트리거 (Event & Trigger)**  
