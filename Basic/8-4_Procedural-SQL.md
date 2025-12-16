@@ -200,6 +200,63 @@ SELECT BONUS(1100) FROM DUAL;
 ```sql
 DROP FUNCTION BONUS;
 ```
+&nbsp;
+<a id="UserFunc"></a>
+
+---
+### **♣ 이벤트와 트리거 (Event & Trigger)**  
+---  
+
+### ① 트리거
+&nbsp; - DB에 이벤트가 발생할 때마다 자동으로 수행되는 저장 프로시저  
+&nbsp;&nbsp; ㄴ DML에 의해 수행되는 '데이터 조작어 기반 트리거'  
+&nbsp;&nbsp; ㄴ DDL에 의해 수행되는 '데이터 정의어 기반 트리거'  
+&nbsp; ★ 행 트리거 (Row-Level Trigger) : 행에 변화가 생길 때 수행, FOR EACH ROW 욥션  
+&nbsp; ★ 문장 트리거 (Statement-Level Trigger) : 이벤트에 의해 단 한번만 수행  
+```ts
+CREATE [OR REPLACE] TRIGGER 트리거명
+{BEFORE | AFTER}
+이벤트 [OR 이벤트] ON 테이블명
+[FOR EACH ROW]
+[WHEN (조건식)]
+[DECLARE 지역변수명 자료형;]
+BEGIN
+  명령문;
+  명령문;
+  ···
+END;
+/
+```
+★ BEFORE | AFTER : 실행 시점 - 이벤트 전/후  
+★ 이벤트 : INSERT/UPDATE/DELETE - 여러개 사용 시 'OR'로 연결  
+★ FOR EACH ROW : 해당 옵션이 존재하면 행트리거로 수행됨  
+```sql
+CREATE OR REPLACE TRIGGER RAISE BEFORE UPDATE ON Employee FOR EACH ROW
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('인상 전 급여 : ' || :OLD_SALARY);
+  DBMS_OUTPUT.PUT_LINE('인상 후 급여 : ' || :NEW_SALARY);
+END;
+/
+```
+
+&nbsp;
+### ② 트리거 자동 수행
+&nbsp; - INSERT, UPDATE, DELETE 수행 시 마다  
+```sql
+-- 출력 가능하도록 설정
+> SET SERVEROUTPUT ON;
+-- BEFORE 트리거 발동
+> UPDATE Employee SET em_salary = em.salary * 1.1 WHERE dept_id = '교육부';
+```
+
+&nbsp;
+### ③ 트리거 제거
+```ts
+DROP TRIGGER 트리거명;
+```
+```sql
+DROP TRIGGER RAISE;
+```
 
 &nbsp;
 ### 다음 글 계속 읽기 →
