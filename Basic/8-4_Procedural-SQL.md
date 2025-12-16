@@ -231,13 +231,16 @@ END;
 ★ 이벤트 : INSERT/UPDATE/DELETE - 여러개 사용 시 'OR'로 연결  
 ★ FOR EACH ROW : 해당 옵션이 존재하면 행트리거로 수행됨  
 ```sql
-CREATE OR REPLACE TRIGGER RAISE BEFORE UPDATE ON Employee FOR EACH ROW
+CREATE OR REPLACE TRIGGER raise_salary
+BEFORE UPDATE OF em_salary ON Employee
+FOR EACH ROW
 BEGIN
-  DBMS_OUTPUT.PUT_LINE('인상 전 급여 : ' || :OLD_SALARY);
-  DBMS_OUTPUT.PUT_LINE('인상 후 급여 : ' || :NEW_SALARY);
+  DBMS_OUTPUT.PUT_LINE('인상 전 급여 : ' || :OLD.SALARY);
+  DBMS_OUTPUT.PUT_LINE('인상 후 급여 : ' || :NEW.SALARY);
 END;
 /
 ```
+★ OLD,NEW : Oracle에서 FOR EACH ROW 수행 중 변경 전후 값을 기억하는 레코드  
 
 &nbsp;
 ### ② 트리거 자동 수행
@@ -255,7 +258,7 @@ END;
 DROP TRIGGER 트리거명;
 ```
 ```sql
-DROP TRIGGER RAISE;
+DROP TRIGGER raise_salary;
 ```
 
 &nbsp;
