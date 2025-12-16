@@ -187,7 +187,7 @@ EXECUTE :var_rst := BONUS(1100);
 PRINT var_rst;
 ```
 &nbsp;- 자료형이 NUMBER인 var_rst 변수 생성  
-&nbsp;- BONUS(1100)을 호출하여 반환값을 var_rst에 저장
+&nbsp;- BONUS(1100)을 호출하여 반환값을 var_rst에 저장  
 &nbsp;- var_rst를 출력  
 
 **2-2. DML에서 호출**  
