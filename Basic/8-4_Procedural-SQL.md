@@ -16,12 +16,14 @@
 &nbsp;- 종류 : 프로시저, 사용자 정의 함수, 트리거  
 &nbsp;- 필수 구성요소 : DECLARE, BEGIN, END  
 &nbsp;- 블록의 DECLARE에 의해 선언되는 절차형 SQL과 CREATE/DROP에 의해 저장 및 제거되는 절차형 SQL  
+
 &nbsp;
 ### ② PL/SQL (Procedural Language Extension to SQL)
 &nbsp;- SQL을 확장한 절차적 언어  
 &nbsp;- 사용자가 PL/SQL 블록을 보내면 서버에서 PL과 SQL을 분리하여 처리  
 &nbsp;- 블록단위 실행 (BEGIN ~ END;/)  
 &nbsp;- 변수, 상수 선언 가능, 제어문 구현과 예외처리 가능  
+
 &nbsp;
 ### ③ PL/SQL 기본블록 구조와 변수  
 | 구문 | 의미 | 필수여부 | 사용방법 |
@@ -52,7 +54,7 @@ END CASE;
 &nbsp;
 ### ⑤ 반복문  
 &nbsp;
-5-1. LOOP  
+**5-1. LOOP**  
 &nbsp; · EXIT는 무한루프 무조건 탈출  
 &nbsp; · 조건식이 붙으면 조건식이 참일 때 탈출  
 ```ts
@@ -64,7 +66,7 @@ LOOP
 END LOOP;
 ```
 &nbsp;
-5-2. WHILE  
+**5-2. WHILE**  
 &nbsp; · 조건식이 참일 경우에만 내부 블록 실행  
 ```ts
 WHILE 조건식 LOOP
@@ -74,7 +76,7 @@ WHILE 조건식 LOOP
 END LOOP;
 ```
 &nbsp;
-5-3. FOR-IN  
+**5-3. FOR-IN**  
 &nbsp; · 첨자변수가 시작값부터 1씩 증가하여 끝값이 될 때까지 내부 블록 실행  
 ```ts
 FOR 첨자변수 IN [REVERSE] 시작값 .. 끝값 LOOP
@@ -177,7 +179,7 @@ END;
 &nbsp;
 ### ② 호출 및 출력  
 
-2-1. 함수명으로 호출  
+**2-1. 함수명으로 호출**  
 ```sql
 VARIABLE var_rst NUMBER;
 EXECUTE :var_rst := BONUS(1100);
@@ -187,7 +189,7 @@ PRINT var_rst;
 &nbsp;- BONUS(1100)을 호출하여 반환값을 var_rst에 저장
 &nbsp;- var_rst를 출력  
 
-2-2. DML에서 호출  
+**2-2. DML에서 호출**  
 ```sql
 SELECT BONUS(1100) FROM DUAL;
 ```
