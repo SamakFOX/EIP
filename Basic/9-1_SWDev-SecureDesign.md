@@ -64,17 +64,17 @@
 &nbsp;
 ### ⑤ 정보 보안의 3대 요소
 **5-1. 기밀성 (Confidentiality) <sup>★</sup>**  
-&nbsp; : 인가된 사용자만이 정보자산에 접근 가능  
+&nbsp; : <mark>인가된 사용자만</mark>이 정보자산에 접근 가능  
 &nbsp;&nbsp;&nbsp;&nbsp; ex) 방화벽, 암호, 패스워드 등  
 &nbsp;&nbsp;&nbsp;&nbsp; → 신분 위장 공격 가능  
 
 **5-2. 무결성 (Integrity, 완전성) <sup>★</sup>**  
-&nbsp; : 인가된 사용자가 인가된 방법으로만 수정 가능  
+&nbsp; : <mark>인가된 사용자가 인가된 방법으로만</mark> 수정 가능  
 &nbsp;&nbsp;&nbsp;&nbsp; ex) 방화벽, 암호, 패스워드 등  
 &nbsp;&nbsp;&nbsp;&nbsp; → 변경, 가장, 재전송 등 공격 가능  
 
 **5-3. 가용성 (Availability) <sup>★</sup>**  
-&nbsp; : 사용자가 필요할 때 데이터에 접근할 수 있는 능력  
+&nbsp; : 사용자가 <mark>필요할 때 데이터에 접근</mark>할 수 있는 능력  
 &nbsp;&nbsp;&nbsp;&nbsp; ex) 방화벽, 암호, 패스워드 등  
 &nbsp;&nbsp;&nbsp;&nbsp; → 서비스 거부 공격 가능  
 
