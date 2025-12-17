@@ -43,15 +43,15 @@
 ★ 키 분배가 공개키보다 어려움  
 | 암호 방식 | 상세 설명 |
 |:---:|---|
-| 스트림 방식 | 평문의 길이와 동일한 스트림(Stream)을 생성하여 비트 단위로 암호화<br>암호화할때 XOR 연산을 수행<br>종류 : RC4, A5/1, LSFR, SEAL, WEP, OFB |
-| 블록 방식 | 평문을 블록 단위로 암호화하는 대칭키 암호 시스템<br>종류 : DES, AES, ARIA, SEED, IDEA |
+| 스트림 방식 | · 평문의 길이와 동일한 스트림(Stream)을 생성하여 비트 단위로 암호화<br>· 암호화할때 XOR 연산을 수행<br>· 종류 : RC4, A5/1, LSFR, SEAL, WEP, OFB |
+| 블록 방식 | · 평문을 블록 단위로 암호화하는 대칭키 암호 시스템<br>· 종류 : DES, AES, ARIA, SEED, IDEA |
 
 ★ 블록 암호화 시스템 종류
 | 종류 | 상세 설명 |
 |:---:|---|
-| DES | Data Encryption Standard |
-| AES | Advanced Encryption Standard |
-| ARIA | 국내 기술 |
-| SEED | 국내 기술 |
-| IDEA | DES 대체 기술 |
+| DES | · Data Encryption Standard |
+| AES | · Advanced Encryption Standard |
+| ARIA | · 국내 기술 |
+| SEED | · 국내 기술 |
+| IDEA | · DES 대체 기술 |
 
