@@ -2,9 +2,6 @@
 
 ## 목차
 - [1. SW개발 보안 설계](#SWDevDesign)
-- [2. ](#)
-- [3. ](#)
-- [4. ](#)
 &nbsp;
 
 <a id="SWDevDesign"></a>
@@ -90,7 +87,7 @@
 &nbsp;
 ### ⑦ 법률적 검토
 &nbsp; ● 정보보호 관련 법규와 규제 등을 확인하여 올바른 보안을 적용  
-&nbsp; ● 관련기관
+&nbsp; ● 관련기관  
 &nbsp;&nbsp;&nbsp;&nbsp; - 행정안전부 : 보안정책 총괄  
 &nbsp;&nbsp;&nbsp;&nbsp; - 한국인터넷진흥원(KISA) : 개발 보안 정책 및 가이드 개발  
 
@@ -122,3 +119,7 @@
 ### ⑩ 취약점 점검 계획서, 명세서 검토
 취약점 점검 계획서 / 취약점 점검 설계 명세서 / 취약점 점검 케이스 명세서 / 취약점 점검 절차 명세서 / 취약점 점검 목록 분석 / 가정 분석 / 도식화 기법  
 
+&nbsp;
+### 다음 글 계속 읽기 →
+| 9-2. SW 개발 보안 구현 | [![읽어보기](https://img.shields.io/badge/읽어보기-blue?style=for-the-badge)](https://github.com/SamakFOX/EIP/blob/main/Basic/9-2_SWDev-SecureImp.md)   |
+|:---:|:---:|
