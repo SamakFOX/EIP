@@ -80,6 +80,7 @@
 
 &nbsp;
 ### ⑥ 위협, 자산, 취약점 개념
+<img src="https://github.com/SamakFOX/EIP/blob/main/ExampleImages/Danger.png" width="500"/>
 
 &nbsp; ※ 자산 : 기업 내부 데이터 또는 시스템  
 &nbsp; ※ 위협원 : 자연재해를 포함한 임직원 및 내외부인사 등  
