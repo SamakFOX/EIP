@@ -68,7 +68,7 @@
 | EIGama | · 이산대수 문제의 어려움에 기초<br> · 같은 메시지도 암호화 마다 암호문 길이가 2배 |
 
 &nbsp;
-### ⑤ 해시 (HASH)
+### ⑤ 해시 (HASH) <sup>★</sup>
 &nbsp;· 임의 길이의 메시지를 입력받아 <mark>고정된 길이의 출력값으로 반환</mark>  
 &nbsp;· 주어진 원문에서 고정길이의 의사난수 생성, 생성된 값이 해시값  
 &nbsp;· 디지털 서명에서 데이터 무결성 제공  
@@ -79,3 +79,8 @@
 | SHA | · Secure Hash Algorithm<br> · 1993 미국 NIST 개발<br> · 가장 많이 사용하는 방식<br> ★ SHA1 : DSA에서 사용<br> ★ SHA256, SHA384, SHA512<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ㄴ 128&nbsp;&nbsp;&nbsp;&nbsp;ㄴ 192&nbsp;&nbsp;&nbsp;&nbsp;ㄴ 256<br> : AES의 키 길이인 128, 192, 256 비트에 대응하도록 출력 길이를 늘린 해시 알고리즘 |
 | MD5 | · Message-Digestal Algorithm 5<br> · 1992 Ron Rivest 개발<br> ★ 널리 사용되었으나 '충돌 회피성'에서 문제가 있어 사용 X<br> ㄴ 기존 응용과의 호환으로만 사용  |
 | HAS-160 | · 국내 개발된 대표적 해시함수 (SHA와 유사)<br> · 기존 MD 계열 해시함수와는 차이 |
+
+&nbsp;
+### ★ MD4와 MD5 차이
+MD4 : 16단계 3라운드 / 라운드당 한번씩 3개의 기약함수  
+MD5 : 16단계 4라운드 / 라운드당 한번씩 4개의 기약논리함수  
