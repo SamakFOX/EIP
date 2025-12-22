@@ -33,7 +33,7 @@
 ![알고리즘_흐름도](https://github.com/SamakFOX/EIP/blob/main/ExampleImages/EncDnc.png)
 
 ★ 암호 방식의 분류  
-![암복호화_방식]()
+![암복호화_방식](https://github.com/SamakFOX/EIP/blob/main/ExampleImages/EncList.png)
 
 &nbsp;
 ### ③ 비밀키 (Private Key, 대칭키) 암호화 기법 <sup>★</sup>
