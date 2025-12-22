@@ -30,7 +30,7 @@
 &nbsp;
 ### ② 암호화 알고리즘
 ★ 평문을 암호문으로, 암호문을 평문으로 바꿀 때 사용되는 알고리즘  
-![알고리즘_흐름도]()
+![알고리즘_흐름도](https://github.com/SamakFOX/EIP/blob/main/ExampleImages/EncDnc.png)
 
 ★ 암호 방식의 분류  
 ![암복호화_방식]()
