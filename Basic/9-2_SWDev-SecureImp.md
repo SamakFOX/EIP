@@ -49,9 +49,20 @@
 ★ 블록 암호화 시스템 종류
 | 종류 | 상세 설명 |
 |:---:|---|
-| DES | · Data Encryption Standard |
-| AES | · Advanced Encryption Standard |
-| ARIA | · 국내 기술 |
-| SEED | · 국내 기술 |
-| IDEA | · DES 대체 기술 |
+| DES | · Data Encryption Standard<br> · 1970년대 초 IBM이 개발<br> · 16라운드 Feistal 구조<br> · 평문을 64bit로 블록화하고, 실제 키의 길이는 56bit 이용<br> · 전사공격에 취약(Brute-Force Attack) |
+| AES | · Advanced Encryption Standard<br> · DES를 대신하는 새로운 표준<br> · 블록 크기는 128bit, 키 길이는 128/192/256bit<br> · SPN 구조이다 |
+| ARIA | · 국내 기술<br> · 경량 환경 및 하드웨어 구현 시 효율성 향상이 목적<br> · 우리나라 국가 표준<br> · 블록크기와 키 길이는 AES와 같음 |
+| SEED | · 국내 기술<br> · 128bit 블록 암호 알고리즘<br> · Feistel 구조<br> · 2005년 국제 표준 |
+| IDEA | · DES 대체 기술<br> · 스위스 개발<br> · 상이한 대수 그룹으로부터 세가지 연산을 혼합 |
 
+&nbsp;
+### ④ 공개키 (Public Key, 비대칭키) 암호화 기법 <sup>★</sup>
+**공개키 = 비대칭키**  
+암호화키와 복호화키가 달라 복호화키를 공개해도 됨  
+★ 암복호화 속도가 느리고 알고리즘이 복잡  
+★ 키 분배가 비밀키보다 용이  
+★ RSA(Rivest Shamir Adlem), EIGama, Robin, ECC, DSS 기법 등이 있음  
+| 종류 | 상세 설명 |
+|:---:|---|
+| RSA | · 소인수분해의 어려움에 기초<br> · 전자문서 인증 및 부인방지에 이용 |
+| EIGama | · 이산대수 문제의 어려움에 기초<br> · 같은 메시지도 암호화 마다 암호문 길이가 2배 |
